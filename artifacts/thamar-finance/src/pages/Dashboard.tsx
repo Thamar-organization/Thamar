@@ -84,15 +84,15 @@ export default function Dashboard() {
             <p className="mb-3 px-3 text-[10px] font-semibold uppercase tracking-[.2em] text-[var(--muted-foreground)]">{isArabic ? 'المساحة الشخصية' : 'YOUR SPACE'}</p>
             <nav className="space-y-1" aria-label="Main navigation">
               {[
-                { icon: Home, label: t.overview, active: true, id: 'overview' },
-                { icon: BarChart3, label: t.investments, active: false, id: 'investments' },
-                { icon: FileText, label: t.journal, active: false, id: 'journal' },
+                { icon: Home, label: t.overview, active: true, id: 'overview', href: '/dashboard' },
+                { icon: Wallet, label: isArabic ? 'محفظتك المستقبلية' : 'Your future portfolio', active: false, id: 'portfolio', href: '/portfolio' },
+                { icon: BarChart3, label: isArabic ? 'استثمارك اليوم' : 'Invest today', active: false, id: 'today', href: '/invest-today' },
               ].map((item) => (
-                <button key={item.id} type="button" onClick={() => item.id !== 'overview' && window.alert(isArabic ? 'هذه المساحة ستتوفر قريباً في النسخة الكاملة.' : 'This space will be available in the full version.')} className={`flex w-full items-center gap-3 rounded-xl px-3 py-3 text-sm transition ${item.active ? 'bg-[var(--olive)] font-semibold text-[var(--paper)] shadow-sm' : 'text-[var(--olive-deep)] hover:bg-white/45'}`} data-testid={`nav-${item.id}`}>
+                <Link key={item.id} href={item.href} className={`flex w-full items-center gap-3 rounded-xl px-3 py-3 text-sm transition ${item.active ? 'bg-[var(--olive)] font-semibold text-[var(--paper)] shadow-sm' : 'text-[var(--olive-deep)] hover:bg-white/45'}`} data-testid={`nav-${item.id}`}>
                   <item.icon size={17} strokeWidth={item.active ? 2 : 1.7} />
                   <span>{item.label}</span>
                   {item.active && <span className="ms-auto h-1.5 w-1.5 rounded-full bg-[var(--gold)]" />}
-                </button>
+                </Link>
               ))}
             </nav>
           </div>
@@ -130,7 +130,9 @@ export default function Dashboard() {
           </header>
           {menuOpen && (
             <div className="surface mt-4 rounded-2xl p-3 lg:hidden" data-testid="mobile-navigation">
-              <button type="button" className="flex w-full items-center gap-3 rounded-xl bg-[var(--olive)] px-3 py-3 text-sm font-semibold text-[var(--paper)]" data-testid="nav-mobile-overview"><Home size={17} />{t.overview}</button>
+              <Link href="/dashboard" className="flex w-full items-center gap-3 rounded-xl bg-[var(--olive)] px-3 py-3 text-sm font-semibold text-[var(--paper)]" data-testid="nav-mobile-overview"><Home size={17} />{t.overview}</Link>
+              <Link href="/portfolio" className="mt-1 flex w-full items-center gap-3 rounded-xl px-3 py-3 text-sm text-[var(--muted-foreground)]" data-testid="nav-mobile-portfolio"><Wallet size={17} />{isArabic ? 'محفظتك المستقبلية' : 'Your future portfolio'}</Link>
+              <Link href="/invest-today" className="mt-1 flex w-full items-center gap-3 rounded-xl px-3 py-3 text-sm text-[var(--muted-foreground)]" data-testid="nav-mobile-today"><BarChart3 size={17} />{isArabic ? 'استثمارك اليوم' : 'Invest today'}</Link>
               <button type="button" onClick={() => setLocation('/')} className="mt-1 flex w-full items-center gap-3 rounded-xl px-3 py-3 text-sm text-[var(--muted-foreground)]" data-testid="button-mobile-logout"><LogOut size={17} />{t.logout}</button>
             </div>
           )}
