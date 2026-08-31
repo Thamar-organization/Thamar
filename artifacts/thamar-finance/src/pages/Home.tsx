@@ -14,7 +14,7 @@ export default function Home() {
 
   const copy = isArabic ? {
     welcome: 'أهلاً بك في ثَمَر',
-    subtitle: 'نرتّب أموالك اليوم، لنمنح غدك مساحة أكبر.',
+    subtitle: 'استثمر أموالك اليوم لمستقبل مالي مستدام',
     login: 'تسجيل الدخول',
     loginHint: 'أدخل بياناتك لنفتح لك دفتر ثَمَر المالي.',
     email: 'البريد الإلكتروني',
