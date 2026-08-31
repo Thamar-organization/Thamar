@@ -1,0 +1,1550 @@
+{
+  "navigation_bar": {
+    "name": "Navigation Bar",
+    "description": "Create nested tabs inside the main tab for navigation",
+    "widgetId": "navigation_bar",
+    "category": "Others",
+    "sub_category": "Utils",
+    "gridData": {
+      "w": 40,
+      "h": 2,
+      "minW": 40,
+      "maxH": 2
+    }
+  },
+  "market_indices": {
+    "name": "Market Indices",
+    "description": "Overview of current market indices such as S&P 500, Gold, Nasdaq",
+    "widgetType": "individual",
+    "widgetId": "market_indices",
+    "category": "Index",
+    "gridData": {
+      "w": 40,
+      "h": 4,
+      "minW": 20
+    },
+    "source": ["fmp"]
+  },
+  "ticker_information": {
+    "name": "Ticker Information",
+    "description": "Snapshot of a ticker",
+    "widgetType": "individual",
+    "widgetId": "ticker_information",
+    "category": "Equity",
+    "gridData": {
+      "w": 20,
+      "h": 4
+    },
+    "source": ["fmp"]
+  },
+  "global_news": {
+    "name": "Global News",
+    "description": "News from around the world",
+    "widgetType": "individual",
+    "endpoint": "globalNews",
+    "widgetId": "global_news",
+    "category": "News",
+    "gridData": {
+      "w": 20,
+      "h": 18
+    },
+    "source": ["benzinga"]
+  },
+  "charting": {
+    "name": "Charting",
+    "description": "Interactive tradingview charting",
+    "widgetType": "individual",
+    "widgetId": "charting",
+    "category": "Others",
+    "sub_category": "Technical Analysis",
+    "gridData": {
+      "w": 40,
+      "h": 16
+    },
+    "source": ["fmp", "intrinio", "fred"]
+  },
+  "watchlist": {
+    "name": "Watchlist",
+    "description": "Overview of selected assets",
+    "category": "Others",
+    "sub_category": "Utils",
+    "widgetType": "individual",
+    "widgetId": "watchlist",
+    "source": ["fmp", "intrinio"]
+  },
+  "company_news": {
+    "name": "Company News",
+    "description": "Company specific news",
+    "widgetType": "individual",
+    "endpoint": "companyNews",
+    "widgetId": "company_news",
+    "category": "News",
+    "gridData": {
+      "w": 20,
+      "h": 18
+    },
+    "source": ["benzinga"]
+  },
+  "company_profile": {
+    "name": "Company profile",
+    "description": "Overview of company",
+    "widgetType": "individual",
+    "endpoint": "companyProfile",
+    "widgetId": "company_profile",
+    "category": "Equity",
+    "gridData": {
+      "w": 20,
+      "h": 16
+    },
+    "source": ["fmp"]
+  },
+  "price_performance": {
+    "name": "Price performance",
+    "description": "Interactive chart for asset price performance",
+    "widgetType": "individual",
+    "endpoint": "pricePerformance",
+    "widgetId": "price_performance",
+    "category": "Equity",
+    "sub_category": "Price",
+    "gridData": {
+      "w": 20,
+      "h": 16
+    },
+    "source": ["intrinio"]
+  },
+  "share_statistics": {
+    "name": "Share Statistics",
+    "description": "Company shares for trading",
+    "widgetType": "individual",
+    "endpoint": "shareStatistics",
+    "widgetId": "share_statistics",
+    "category": "Equity",
+    "sub_category": "Ownership",
+    "gridData": {
+      "w": 10,
+      "h": 6
+    },
+    "source": ["fmp"]
+  },
+  "financial_ratios": {
+    "name": "Financial Ratios",
+    "description": "Company financial ratios such as P/B, ROE, etc.",
+    "widgetType": "individual",
+    "sdkFunc": "useEquityFundamentalMetrics",
+    "widgetId": "financial_ratios",
+    "category": "Equity",
+    "sub_category": "Fundamental Analysis",
+    "params": {
+      "with_ttm": true
+    },
+    "data": {
+      "table": {
+        "enableCharts": true,
+        "transpose": true,
+        "period": ["annual", "quarterly", "TTM"],
+        "showAll": true
+      }
+    },
+    "gridData": {
+      "w": 40,
+      "h": 16
+    },
+    "source": ["fmp"]
+  },
+  "peers_list": {
+    "name": "Stock Peers",
+    "description": "Similar companies",
+    "widgetType": "individual",
+    "endpoint": "peers",
+    "widgetId": "peers_list",
+    "category": "Equity",
+    "sub_category": "Comparison Analysis",
+    "gridData": {
+      "w": 20,
+      "h": 10
+    },
+    "disabled": true
+  },
+  "key_metrics": {
+    "name": "Key Metrics",
+    "description": "Key financial metrics, such as revenue, P/E, etc.",
+    "widgetType": "individual",
+    "endpoint": "companyOutlook",
+    "widgetId": "key_metrics",
+    "category": "Equity",
+    "sub_category": "Fundamental Analysis",
+    "gridData": {
+      "w": 20,
+      "h": 8
+    },
+    "source": ["fmp"]
+  },
+  "management_team": {
+    "name": "Management Team",
+    "description": "Company management team",
+    "widgetType": "individual",
+    "sdkFunc": "useEquityFundamentalManagement",
+    "data": {
+      "table": {
+        "enableCharts": true,
+        "columnsDefs": [
+          {
+            "field": "name",
+            "headerName": "Name",
+            "chartDataType": "category"
+          },
+          {
+            "field": "title",
+            "headerName": "Title",
+            "chartDataType": "excluded"
+          },
+          {
+            "field": "pay",
+            "headerName": "Compensation"
+          },
+          {
+            "field": "currency_pay",
+            "headerName": "Currency"
+          }
+        ]
+      }
+    },
+    "widgetId": "management_team",
+    "category": "Equity",
+    "gridData": {
+      "w": 20,
+      "h": 14
+    },
+    "source": ["fmp"]
+  },
+  "revenue_per_geography": {
+    "name": "Revenue Per Geography",
+    "description": "Geographical breakdown of company revenue",
+    "widgetType": "individual",
+    "defaultViz": "chart",
+    "sdkFunc": "revenuePerGeog",
+    "widgetId": "revenue_per_geography",
+    "category": "Equity",
+    "sub_category": "Fundamental Analysis",
+    "gridData": {
+      "w": 20,
+      "h": 14
+    },
+    "source": ["fmp"]
+  },
+  "revenue_per_bus_line": {
+    "name": "Revenue Per Business Line",
+    "description": "Revenue breakdown by product category",
+    "widgetType": "individual",
+    "defaultViz": "chart",
+    "sdkFunc": "revenuePerBusLine",
+    "widgetId": "revenue_per_bus_line",
+    "category": "Equity",
+    "sub_category": "Fundamental Analysis",
+    "gridData": {
+      "w": 20,
+      "h": 14
+    },
+    "source": ["fmp"]
+  },
+  "valuation_multiples": {
+    "name": "Valuation Multiples",
+    "description": "Valuation Multiples such as P/E ratio, P/B ratio, etc",
+    "widgetType": "individual",
+    "sdkFunc": "useEquityFundamentalMetrics",
+    "params": {
+      "with_ttm": true
+    },
+    "data": {
+      "table": {
+        "period": ["annual", "quarterly", "TTM"],
+        "enableCharts": true,
+        "transpose": true,
+        "columnsDefs": [
+          {
+            "headerName": "Date",
+            "field": "date",
+            "cellDataType": "date",
+            "chartDataType": "category",
+            "maxWidth": 100,
+            "formatterFn": "dateToYear"
+          },
+          {
+            "headerName": "Period",
+            "field": "period",
+            "chartDataType": "category",
+            "maxWidth": 100
+          },
+          {
+            "headerName": "P/E Ratio",
+            "field": "pe_ratio"
+          },
+          {
+            "headerName": "P/S Ratio",
+            "field": "price_to_sales_ratio"
+          },
+          {
+            "headerName": "P/B Ratio",
+            "field": "pb_ratio"
+          },
+          {
+            "headerName": "EV/Sales Ratio",
+            "field": "ev_to_sales"
+          },
+          {
+            "headerName": "EV/EBITDA",
+            "field": "enterprise_value_over_ebitda"
+          },
+          {
+            "headerName": "Dividend Yield",
+            "field": "dividend_yield"
+          }
+        ]
+      }
+    },
+    "widgetId": "valuation_multiples",
+    "category": "Equity",
+    "sub_category": "Fundamental Analysis",
+    "gridData": {
+      "w": 40,
+      "h": 12
+    },
+    "source": ["fmp"]
+  },
+  "balance_sheet": {
+    "name": "Balance Sheet",
+    "description": "Company Balance Sheet",
+    "widgetType": "individual",
+    "sdkFunc": "useEquityFundamentalBalance",
+    "disabled": true,
+    "data": {
+      "table": {
+        "enableCharts": true,
+        "transpose": true,
+        "period": ["annual", "quarterly"],
+        "columnsDefs": [
+          {
+            "headerName": "Date",
+            "field": "date",
+            "cellDataType": "date",
+            "chartDataType": "category",
+            "maxWidth": 100,
+            "formatterFn": "none"
+          },
+          {
+            "headerName": "Period",
+            "field": "period",
+            "chartDataType": "category",
+            "maxWidth": 100
+          },
+          {
+            "headerName": "Cash And Cash Equivalents",
+            "field": "cash_and_cash_equivalents"
+          },
+          {
+            "headerName": "Short Term Investments",
+            "field": "short_term_investments"
+          },
+          {
+            "headerName": "Cash And Short Term Investments",
+            "field": "cash_and_short_term_investments"
+          },
+          {
+            "headerName": "Net Receivables",
+            "field": "net_receivables"
+          },
+          {
+            "headerName": "Inventory",
+            "field": "inventory"
+          },
+          {
+            "headerName": "Other Current Assets",
+            "field": "other_current_assets"
+          },
+          {
+            "headerName": "Total Current Assets",
+            "field": "current_assets"
+          },
+          {
+            "headerName": "Property Plant Equipment Net",
+            "field": "property_plant_equipment_net"
+          },
+          {
+            "headerName": "Goodwill",
+            "field": "goodwill"
+          },
+          {
+            "headerName": "Intangible Assets",
+            "field": "intangible_assets"
+          },
+          {
+            "headerName": "Goodwill And Intangible Assets",
+            "field": "goodwill_and_intangible_assets"
+          },
+          {
+            "headerName": "Long Term Investments",
+            "field": "long_term_investments"
+          },
+          {
+            "headerName": "Tax Assets",
+            "field": "tax_assets"
+          },
+          {
+            "headerName": "Other Non Current Assets",
+            "field": "other_non_current_assets"
+          },
+          {
+            "headerName": "Total Non Current Assets",
+            "field": "non_current_assets"
+          },
+          {
+            "headerName": "Other Assets",
+            "field": "other_assets"
+          },
+          {
+            "headerName": "Total Assets",
+            "field": "assets"
+          },
+          {
+            "headerName": "Account Payables",
+            "field": "account_payables"
+          },
+          {
+            "headerName": "Short Term Debt",
+            "field": "short_term_debt"
+          },
+          {
+            "headerName": "Tax Payables",
+            "field": "tax_payables"
+          },
+          {
+            "headerName": "Deferred Revenue",
+            "field": "deferred_revenue"
+          },
+          {
+            "headerName": "Other Current Liabilities",
+            "field": "other_current_liabilities"
+          },
+          {
+            "headerName": "Total Current Liabilities",
+            "field": "current_liabilities"
+          },
+          {
+            "headerName": "Long Term Debt",
+            "field": "long_term_debt"
+          },
+          {
+            "headerName": "Deferred Revenue Non Current",
+            "field": "deferred_revenue_non_current"
+          },
+          {
+            "headerName": "Deferred Tax Liabilities Non Current",
+            "field": "deferred_tax_liabilities_non_current"
+          },
+          {
+            "headerName": "Other Non Current Liabilities",
+            "field": "other_non_current_liabilities"
+          },
+          {
+            "headerName": "Total Non Current Liabilities",
+            "field": "non_current_liabilities"
+          },
+          {
+            "headerName": "Other Liabilities",
+            "field": "other_liabilities"
+          },
+          {
+            "headerName": "Capital Lease Obligations",
+            "field": "capital_lease_obligations"
+          },
+          {
+            "headerName": "Total Liabilities",
+            "field": "liabilities"
+          },
+          {
+            "headerName": "Preferred Stock",
+            "field": "preferred_stock"
+          },
+          {
+            "headerName": "Common Stock",
+            "field": "common_stock"
+          },
+          {
+            "headerName": "Retained Earnings",
+            "field": "retained_earnings"
+          },
+          {
+            "headerName": "Accumulated Other Comprehensive Income Loss",
+            "field": "accumulated_other_comprehensive_income_loss"
+          },
+          {
+            "headerName": "Other Stockholders Equity",
+            "field": "other_stockholder_equity"
+          },
+          {
+            "headerName": "Total Stockholders Equity",
+            "field": "total_stockholders_equity"
+          },
+          {
+            "headerName": "Total Equity",
+            "field": "total_equity"
+          },
+          {
+            "headerName": "Total Liabilities And Stockholders Equity",
+            "field": "total_liabilities_and_stockholders_equity"
+          },
+          {
+            "headerName": "Minority Interest",
+            "field": "minority_interest"
+          },
+          {
+            "headerName": "Total Liabilities And Total Equity",
+            "field": "total_liabilities_and_total_equity"
+          },
+          {
+            "headerName": "Total Investments",
+            "field": "total_investments"
+          },
+          {
+            "headerName": "Total Debt",
+            "field": "total_debt"
+          },
+          {
+            "headerName": "Net Debt",
+            "field": "net_debt"
+          },
+          {
+            "headerName": "Source",
+            "field": "final_link",
+            "chartDataType": "excluded"
+          }
+        ]
+      }
+    },
+    "widgetId": "balance_sheet",
+    "category": "Equity",
+    "sub_category": "Fundamental Analysis",
+    "gridData": {
+      "w": 40,
+      "h": 16
+    },
+    "source": ["intrinio"]
+  },
+  "income_statement": {
+    "name": "Income Statement",
+    "description": "Company Income Statement",
+    "widgetType": "individual",
+    "sdkFunc": "useEquityFundamentalIncome",
+    "disabled": true,
+    "data": {
+      "table": {
+        "enableCharts": true,
+        "transpose": true,
+        "period": ["annual", "quarterly"],
+        "columnsDefs": [
+          {
+            "headerName": "Date",
+            "field": "date",
+            "chartDataType": "category",
+            "cellDataType": "date",
+            "maxWidth": 100,
+            "formatterFn": "none"
+          },
+          {
+            "headerName": "Period",
+            "field": "period",
+            "chartDataType": "category",
+            "maxWidth": 100
+          },
+          {
+            "headerName": "Revenue",
+            "field": "revenue"
+          },
+          {
+            "headerName": "Cost Of Revenue",
+            "field": "cost_of_revenue"
+          },
+          {
+            "headerName": "Gross Profit",
+            "field": "gross_profit"
+          },
+          {
+            "headerName": "Gross Profit Ratio",
+            "field": "gross_profit_ratio",
+            "formatterFn": "percent"
+          },
+          {
+            "headerName": "Research And Development Expenses",
+            "field": "research_and_development_expenses"
+          },
+          {
+            "headerName": "General And Administrative Expenses",
+            "field": "general_and_administrative_expenses"
+          },
+          {
+            "headerName": "Selling And Marketing Expenses",
+            "field": "selling_and_marketing_expenses"
+          },
+          {
+            "headerName": "Selling General And Administrative Expenses",
+            "field": "selling_general_and_administrative_expenses"
+          },
+          {
+            "headerName": "Other Expenses",
+            "field": "other_expenses"
+          },
+          {
+            "headerName": "Operating Expenses",
+            "field": "operating_expenses"
+          },
+          {
+            "headerName": "Cost And Expenses",
+            "field": "cost_and_expenses"
+          },
+          {
+            "headerName": "Interest Income",
+            "field": "interest_income"
+          },
+          {
+            "headerName": "Interest Expense",
+            "field": "interest_expense"
+          },
+          {
+            "headerName": "Depreciation And Amortization",
+            "field": "depreciation_and_amortization"
+          },
+          {
+            "headerName": "Ebitda",
+            "field": "ebitda"
+          },
+          {
+            "headerName": "Ebitda Ratio",
+            "field": "ebitda_ratio"
+          },
+          {
+            "headerName": "Operating Income",
+            "field": "operating_income"
+          },
+          {
+            "headerName": "Operating Income Ratio",
+            "field": "operating_income_ratio"
+          },
+          {
+            "headerName": "Total Other Income Expenses Net",
+            "field": "total_other_income_expenses_net"
+          },
+          {
+            "headerName": "Income Before Tax",
+            "field": "income_before_tax"
+          },
+          {
+            "headerName": "Income Before Tax Ratio",
+            "field": "income_before_tax_ratio"
+          },
+          {
+            "headerName": "Income Tax Expense",
+            "field": "income_tax_expense"
+          },
+          {
+            "headerName": "Net Income",
+            "field": "net_income"
+          },
+          {
+            "headerName": "Net Income Ratio",
+            "field": "net_income_ratio"
+          },
+          {
+            "headerName": "Earnings Per Share",
+            "field": "eps"
+          },
+          {
+            "headerName": "Earnings Per Share Diluted",
+            "field": "eps_diluted"
+          },
+          {
+            "headerName": "Weighted Average Shares Outstanding",
+            "field": "weighted_average_shares_outstanding"
+          },
+          {
+            "headerName": "Weighted Average Shares Outstanding Diluted",
+            "field": "weighted_average_shares_outstanding_dil"
+          },
+          {
+            "headerName": "Source",
+            "field": "final_link",
+            "chartDataType": "excluded"
+          }
+        ]
+      }
+    },
+    "widgetId": "income_statement",
+    "category": "Equity",
+    "sub_category": "Fundamental Analysis",
+    "gridData": {
+      "w": 40,
+      "h": 16
+    },
+    "source": ["intrinio"]
+  },
+  "cash_flow_statement": {
+    "name": "Cash Flow Statement",
+    "description": "Company Cash Flow Statement",
+    "widgetType": "individual",
+    "sdkFunc": "useEquityFundamentalCash",
+    "disabled": true,
+    "data": {
+      "table": {
+        "enableCharts": true,
+        "period": ["annual", "quarterly"],
+        "transpose": true,
+        "columnsDefs": [
+          {
+            "headerName": "Date",
+            "field": "date",
+            "chartDataType": "category",
+            "maxWidth": 100,
+            "formatterFn": "none"
+          },
+          {
+            "headerName": "Period",
+            "field": "period",
+            "chartDataType": "category",
+            "maxWidth": 100
+          },
+          {
+            "headerName": "Net Income",
+            "field": "net_income"
+          },
+          {
+            "headerName": "Depreciation And Amortization",
+            "field": "depreciation_and_amortization"
+          },
+          {
+            "headerName": "Deferred Income Tax",
+            "field": "deferred_income_tax"
+          },
+          {
+            "headerName": "Stock Based Compensation",
+            "field": "stock_based_compensation"
+          },
+          {
+            "headerName": "Change In Working Capital",
+            "field": "change_in_working_capital"
+          },
+          {
+            "headerName": "Accounts Receivables",
+            "field": "accounts_receivables"
+          },
+          {
+            "headerName": "Inventory",
+            "field": "inventory"
+          },
+          {
+            "headerName": "Accounts Payables",
+            "field": "accounts_payables"
+          },
+          {
+            "headerName": "Other Working Capital",
+            "field": "other_working_capital"
+          },
+          {
+            "headerName": "Other Non Cash Items",
+            "field": "other_non_cash_items"
+          },
+          {
+            "headerName": "Net Cash Flow From Operating Activities",
+            "field": "net_cash_flow_from_operating_activities"
+          },
+          {
+            "headerName": "Investments In Property Plant And Equipment",
+            "field": "investments_in_property_plant_and_equipment"
+          },
+          {
+            "headerName": "Acquisitions Net",
+            "field": "acquisitions_net"
+          },
+          {
+            "headerName": "Purchases Of Investments",
+            "field": "purchases_of_investments"
+          },
+          {
+            "headerName": "Sales Maturities Of Investments",
+            "field": "sales_maturities_of_investments"
+          },
+          {
+            "headerName": "Other Investing Activites",
+            "field": "other_investing_activities"
+          },
+          {
+            "headerName": "Net Cash Used For Investing Activites",
+            "field": "net_cash_used_for_investing_activities"
+          },
+          {
+            "headerName": "Debt Repayment",
+            "field": "debt_repayment"
+          },
+          {
+            "headerName": "Common Stock Issued",
+            "field": "common_stock_issued"
+          },
+          {
+            "headerName": "Common Stock Repurchased",
+            "field": "common_stock_repurchased"
+          },
+          {
+            "headerName": "Dividends Paid",
+            "field": "dividends_paid"
+          },
+          {
+            "headerName": "Other Financing Activites",
+            "field": "other_financing_activities"
+          },
+          {
+            "headerName": "Net Cash Used Provided By Financing Activites",
+            "field": "net_cash_flow_from_financing_activities"
+          },
+          {
+            "headerName": "Effect Of Forex Changes On Cash",
+            "field": "effect_of_forex_changes_on_cash"
+          },
+          {
+            "headerName": "Net Change In Cash",
+            "field": "net_change_in_cash"
+          },
+          {
+            "headerName": "Cash At Beginning Of Period",
+            "field": "cash_at_beginning_of_period"
+          },
+          {
+            "headerName": "Cash At End Of Period",
+            "field": "cash_at_end_of_period"
+          },
+          {
+            "headerName": "Operating Cash Flow",
+            "field": "operating_cash_flow"
+          },
+          {
+            "headerName": "Capital Expenditure",
+            "field": "capital_expenditure"
+          },
+          {
+            "headerName": "Free Cash Flow",
+            "field": "free_cash_flow"
+          },
+          {
+            "headerName": "Source",
+            "field": "final_link",
+            "chartDataType": "excluded"
+          }
+        ]
+      }
+    },
+    "widgetId": "cash_flow_statement",
+    "category": "Equity",
+    "sub_category": "Fundamental Analysis",
+    "gridData": {
+      "w": 40,
+      "h": 16
+    },
+    "source": ["intrinio"]
+  },
+  "company_filings": {
+    "name": "Company Filings",
+    "description": "Recent Company SEC Filings",
+    "widgetType": "individual",
+    "sdkFunc": "useEquityFundamentalFilings",
+    "data": {
+      "table": {
+        "enableCharts": false,
+        "columnsDefs": [
+          {
+            "headerName": "Date",
+            "field": "filing_date",
+            "cellDataType": "date",
+            "chartDataType": "category"
+          },
+          {
+            "headerName": "CIK",
+            "field": "cik",
+            "cellDataType": "text",
+            "chartDataType": "excluded"
+          },
+          {
+            "headerName": "Type",
+            "field": "report_type"
+          },
+          {
+            "headerName": "Source",
+            "field": "filing_url",
+            "chartDataType": "excluded"
+          }
+        ]
+      }
+    },
+    "widgetId": "company_filings",
+    "category": "Equity",
+    "sub_category": "Fundamental Analysis",
+    "gridData": {
+      "w": 12,
+      "h": 14
+    },
+    "source": ["fmp"]
+  },
+  "price_target": {
+    "name": "Price Target",
+    "description": "Chart of analyst price targets with closing price",
+    "widgetType": "individual",
+    "defaultViz": "chart",
+    "sdkFunc": "useEquityEstimatesPriceTarget",
+    "data": {
+      "chart": {
+        "callback": "CreateAnalystsPriceTargetPlot"
+      }
+    },
+    "widgetId": "price_target",
+    "category": "Equity",
+    "sub_category": "Analyst Estimates",
+    "gridData": {
+      "w": 20,
+      "h": 8
+    },
+    "source": ["fmp"]
+  },
+  "analyst_price_target": {
+    "name": "Price Target By Analyst",
+    "description": "Analyst Price Targets",
+    "widgetType": "individual",
+    "sdkFunc": "useEquityEstimatesPriceTarget",
+    "widgetId": "analyst_price_target",
+    "category": "Equity",
+    "sub_category": "Analyst Estimates",
+    "data": {
+      "table": {
+        "columnsDefs": [
+          {
+            "headerName": "Published Date",
+            "field": "published_date",
+            "cellDataType": "date",
+            "chartDataType": "category"
+          },
+          {
+            "headerName": "Analyst Name",
+            "field": "analyst_name",
+            "chartDataType": "category"
+          },
+          {
+            "headerName": "Price Target",
+            "field": "price_target"
+          },
+          {
+            "headerName": "Price When Posted",
+            "field": "price_when_posted"
+          },
+          {
+            "headerName": "Analyst Company",
+            "field": "analyst_company",
+            "chartDataType": "category"
+          },
+          {
+            "headerName": "News URL",
+            "field": "news_url",
+            "chartDataType": "excluded"
+          },
+          {
+            "headerName": "News Publisher",
+            "field": "news_publisher",
+            "chartDataType": "excluded"
+          }
+        ]
+      }
+    },
+    "gridData": {
+      "w": 40,
+      "h": 16
+    },
+    "source": ["fmp"]
+  },
+  "analyst_estimates": {
+    "name": "Analyst Estimates",
+    "description": "Analyst Estimates",
+    "widgetType": "individual",
+    "sdkFunc": "useEquityEstimatesHistorical",
+    "data": {
+      "table": {
+        "period": ["annual", "quarterly"],
+        "columnsDefs": [
+          {
+            "headerName": "Date",
+            "field": "date",
+            "cellDataType": "date",
+            "chartDataType": "category"
+          },
+          {
+            "headerName": "Estimated Revenue Low",
+            "field": "estimated_revenue_low"
+          },
+          {
+            "headerName": "Estimated Revenue High",
+            "field": "estimated_revenue_high"
+          },
+          {
+            "headerName": "Estimated Revenue Avg",
+            "field": "estimated_revenue_avg"
+          },
+          {
+            "headerName": "Estimated EBITDA Low",
+            "field": "estimated_ebitda_low"
+          },
+          {
+            "headerName": "Estimated EBITDA High",
+            "field": "estimated_ebitda_high"
+          },
+          {
+            "headerName": "Estimated EBITDA Avg",
+            "field": "estimated_ebitda_avg"
+          },
+          {
+            "headerName": "Estimated EBIT Low",
+            "field": "estimated_ebit_low"
+          },
+          {
+            "headerName": "Estimated EBIT High",
+            "field": "estimated_ebit_high"
+          },
+          {
+            "headerName": "Estimated EBIT Avg",
+            "field": "estimated_ebit_avg"
+          },
+          {
+            "headerName": "Estimated Net Income Low",
+            "field": "estimated_net_income_low"
+          },
+          {
+            "headerName": "Estimated Net Income High",
+            "field": "estimated_net_income_high"
+          },
+          {
+            "headerName": "Estimated Net Income Avg",
+            "field": "estimated_net_income_avg"
+          },
+          {
+            "headerName": "Estimated SGA Expense Low",
+            "field": "estimated_sga_expense_low"
+          },
+          {
+            "headerName": "Estimated SGA Expense High",
+            "field": "estimated_sga_expense_high"
+          },
+          {
+            "headerName": "Estimated SGA Expense Avg",
+            "field": "estimated_sga_expense_avg"
+          },
+          {
+            "headerName": "Estimated EPS Low",
+            "field": "estimated_eps_low"
+          },
+          {
+            "headerName": "Estimated EPS High",
+            "field": "estimated_eps_high"
+          },
+          {
+            "headerName": "Estimated EPS Avg",
+            "field": "estimated_eps_avg"
+          }
+        ]
+      }
+    },
+    "widgetId": "analyst_estimates",
+    "category": "Equity",
+    "sub_category": "Analyst Estimates",
+    "gridData": {
+      "w": 20,
+      "h": 8
+    },
+    "source": ["fmp"]
+  },
+  "analyst_consensus": {
+    "name": "Analyst Consensus",
+    "description": "Consensus analyst estimates",
+    "widgetType": "individual",
+    "sdkFunc": "useEquityEstimatesPriceTarget",
+    "widgetId": "analyst_consensus",
+    "category": "Equity",
+    "sub_category": "Analyst Estimates",
+    "params": {
+      "with_grade": true
+    },
+    "data": {
+      "table": {
+        "enableCharts": false,
+        "columnsDefs": [
+          {
+            "headerName": "Published Date",
+            "cellDataType": "date",
+            "field": "published_date",
+            "chartDataType": "category"
+          },
+          {
+            "headerName": "Grading Company",
+            "field": "grading_company",
+            "chartDataType": "category"
+          },
+          {
+            "headerName": "Action",
+            "field": "action"
+          },
+          {
+            "headerName": "New Grade",
+            "field": "new_grade"
+          },
+          {
+            "headerName": "Previous Grade",
+            "field": "previous_grade"
+          },
+          {
+            "headerName": "Price When Posted",
+            "field": "price_when_posted"
+          }
+        ]
+      }
+    },
+    "gridData": {
+      "w": 40,
+      "h": 12
+    },
+    "source": ["fmp"]
+  },
+  "earning_history": {
+    "name": "Earnings History",
+    "description": "Historical earnings data",
+    "widgetType": "individual",
+    "endpoint": "companyEarningsHistorical",
+    "widgetId": "earning_history",
+    "category": "Equity",
+    "sub_category": "Fundamental Analysis",
+    "gridData": {
+      "w": 19,
+      "h": 12
+    },
+    "source": ["fmp"]
+  },
+  "earnings_transcripts": {
+    "name": "Earnings Transcripts",
+    "description": "Full transcripts of earnings call",
+    "widgetType": "individual",
+    "endpoint": "earningsTranscript",
+    "widgetId": "earnings_transcripts",
+    "category": "Equity",
+    "sub_category": "Fundamental Analysis",
+    "gridData": {
+      "w": 40,
+      "h": 16
+    },
+    "source": ["fmp"]
+  },
+  "stock_splits": {
+    "name": "Stock Splits",
+    "description": "Historical stock splits",
+    "widgetType": "individual",
+    "endpoint": "splits",
+    "widgetId": "stock_splits",
+    "category": "Equity",
+    "sub_category": "Fundamental Analysis",
+    "defaultViz": "chart",
+    "gridData": {
+      "w": 40,
+      "h": 14
+    },
+    "source": ["fmp"]
+  },
+  "economic_calendar": {
+    "name": "Economic Calendar",
+    "description": "Economic events from around the world",
+    "widgetType": "none",
+    "endpoint": "mock",
+    "widgetId": "economic_calendar",
+    "category": "Economy",
+    "defaultViz": "table",
+    "gridData": {
+      "w": 20,
+      "h": 8
+    },
+    "source": ["tradingeconomics"]
+  },
+  "dividend_payment": {
+    "name": "Dividend Payment",
+    "description": "Historical stock dividends",
+    "widgetType": "individual",
+    "sdkFunc": "useEquityFundamentalDividends",
+    "widgetId": "dividend_payment",
+    "category": "Equity",
+    "sub_category": "Fundamental Analysis",
+    "data": {
+      "table": {
+        "enableCharts": true,
+        "columnsDefs": [
+          {
+            "headerName": "Date",
+            "field": "date",
+            "cellDataType": "date",
+            "chartDataType": "category"
+          },
+          {
+            "headerName": "Adjusted Dividend",
+            "field": "adj_dividend",
+            "formatterFn": "int",
+            "renderFn": "greenRed"
+          },
+          {
+            "headerName": "Dividend",
+            "field": "dividend",
+            "formatterFn": "int",
+            "renderFn": "greenRed"
+          },
+          {
+            "headerName": "Record Date",
+            "field": "record_date",
+            "cellDataType": "date",
+            "chartDataType": "category"
+          },
+          {
+            "headerName": "Payment Date",
+            "field": "payment_date",
+            "cellDataType": "date"
+          },
+          {
+            "headerName": "Declaration Date",
+            "field": "declaration_date",
+            "cellDataType": "date",
+            "chartDataType": "category"
+          }
+        ]
+      }
+    },
+    "gridData": {
+      "w": 40,
+      "h": 12
+    },
+    "source": ["fmp"]
+  },
+  "insider_trading": {
+    "name": "Insider Trading",
+    "description": "Recent Insider Trading",
+    "widgetType": "individual",
+    "sdkFunc": "useEquityOwnershipInsiderTrading",
+    "widgetId": "insider_trading",
+    "category": "Equity",
+    "sub_category": "Ownership",
+    "data": {
+      "table": {
+        "enableCharts": true,
+        "columnsDefs": [
+          {
+            "headerName": "Date",
+            "field": "transaction_date",
+            "cellDataType": "date",
+            "chartDataType": "category"
+          },
+          {
+            "headerName": "Owner CIK",
+            "field": "owner_cik",
+            "cellDataType": "text",
+            "chartDataType": "excluded"
+          },
+          {
+            "headerName": "Type",
+            "field": "transaction_type",
+            "cellDataType": "text"
+          },
+          {
+            "headerName": "Securities Owned",
+            "field": "securities_owned"
+          },
+          {
+            "headerName": "Company CIK",
+            "field": "company_cik",
+            "cellDataType": "text",
+            "chartDataType": "excluded"
+          },
+          {
+            "headerName": "Owner Name",
+            "field": "owner_name",
+            "chartDataType": "category"
+          },
+          {
+            "headerName": "Acquistion or Disposition",
+            "field": "acquisition_or_disposition",
+            "chartDataType": "excluded"
+          },
+          {
+            "headerName": "Form Type",
+            "field": "form_type",
+            "chartDataType": "excluded"
+          },
+          {
+            "headerName": "Securities Transacted",
+            "field": "securities_transacted"
+          },
+          {
+            "headerName": "Price",
+            "field": "transaction_price"
+          },
+          {
+            "headerName": "Security Type",
+            "field": "security_type",
+            "chartDataType": "excluded"
+          }
+        ]
+      }
+    },
+    "gridData": {
+      "w": 40,
+      "h": 12
+    },
+    "source": ["fmp"]
+  },
+  "stock_ownership": {
+    "name": "Stock Ownership",
+    "description": "Percentage of shares owned by major holders",
+    "widgetType": "individual",
+    "sdkFunc": "useEquityOwnershipMajorHolders",
+    "widgetId": "stock_ownership",
+    "category": "Equity",
+    "sub_category": "Ownership",
+    "params": {
+      "date": "string",
+      "include_current_quarter": true
+    },
+    "data": {
+      "table": {
+        "enableCharts": true,
+        "columnsDefs": [
+          {
+            "headerName": "Name",
+            "field": "investor_name",
+            "renderFn": "titleCase",
+            "chartDataType": "category"
+          },
+          {
+            "headerName": "Filing Date",
+            "field": "filing_date",
+            "cellDataType": "date",
+            "chartDataType": "category"
+          },
+          {
+            "headerName": "Discretion",
+            "field": "investment_discretion"
+          },
+          {
+            "headerName": "Shares",
+            "field": "shares_number"
+          },
+          {
+            "headerName": "Value",
+            "field": "market_value"
+          },
+          {
+            "headerName": "Ownership [%]",
+            "field": "ownership"
+          },
+          {
+            "headerName": "Weight [%]",
+            "field": "weight"
+          },
+          {
+            "headerName": "Holding Period [Days]",
+            "field": "holding_period",
+            "chartDataType": "category"
+          },
+          {
+            "headerName": "First Added",
+            "field": "first_added",
+            "chartDataType": "category"
+          }
+        ]
+      }
+    },
+    "gridData": {
+      "w": 40,
+      "h": 12
+    },
+    "source": ["fmp"]
+  },
+  "institutional_ownership": {
+    "name": "Institutional Ownership",
+    "description": "Instutional Ownership",
+    "widgetType": "individual",
+    "sdkFunc": "useEquityOwnershipInstitutional",
+    "widgetId": "institutional_ownership",
+    "category": "Equity",
+    "sub_category": "Ownership",
+    "params": {
+      "include_current_quarter": true
+    },
+    "data": {
+      "table": {
+        "enableCharts": false,
+        "transpose": true,
+        "columnsDefs": [
+          {
+            "headerName": "Investors Holding",
+            "field": "investors_holding"
+          },
+          {
+            "headerName": "Number Of Shares",
+            "field": "last_number_of_13f_shares"
+          },
+          {
+            "headerName": "Total Invested",
+            "field": "total_invested"
+          },
+          {
+            "headerName": "Ownership Percent",
+            "field": "ownership_percent"
+          },
+          {
+            "headerName": "New Positions",
+            "field": "new_positions"
+          },
+          {
+            "headerName": "Increased Positions",
+            "field": "increased_positions"
+          },
+          {
+            "headerName": "Closed Positions",
+            "field": "closed_positions"
+          },
+          {
+            "headerName": "Reduced Positions",
+            "field": "reduced_positions"
+          },
+          {
+            "headerName": "Total Calls",
+            "field": "total_calls"
+          },
+          {
+            "headerName": "Total Puts",
+            "field": "total_puts"
+          },
+          {
+            "headerName": "Put Call Ratio",
+            "field": "put_call_ratio"
+          }
+        ]
+      }
+    },
+    "gridData": {
+      "w": 40,
+      "h": 12
+    },
+    "source": ["fmp"]
+  },
+  "rich_note": {
+    "name": "Text Widget",
+    "description": "Create a text widget",
+    "category": "Others",
+    "sub_category": "Utils",
+    "widgetId": "rich_note"
+  },
+  "iframe": {
+    "name": "Iframe",
+    "description": "Embed an iframe",
+    "category": "Others",
+    "sub_category": "Utils",
+    "widgetId": "iframe",
+    "disabled": true
+  },
+  "xml_viewer": {
+    "name": "XML Viewer",
+    "description": "View XML (e.g., to view rss feeds or sec filings)",
+    "category": "Others",
+    "sub_category": "Utils",
+    "widgetId": "xml_viewer",
+    "disabled": true
+  },
+  "rss_viewer": {
+    "name": "RSS Feed",
+    "description": "View and manage RSS feeds",
+    "category": "Others",
+    "sub_category": "Utils",
+    "widgetId": "rss_viewer",
+    "disabled": false
+  },
+  "clock": {
+    "name": "Clock",
+    "description": "Display the time from various timezones",
+    "category": "Others",
+    "sub_category": "Utils",
+    "widgetId": "clock",
+    "gridData": {
+      "w": 20,
+      "h": 4
+    }
+  },
+  "external_table": {
+    "name": "External Table",
+    "description": "Show a table loaded from external source",
+    "category": "Others",
+    "widgetId": "external_table",
+    "external": true,
+    "disabled": true
+  },
+  "pyscript": {
+    "name": "PyScript",
+    "description": "Run a python interpreter",
+    "category": "Others",
+    "widgetId": "pyscript",
+    "disabled": true
+  },
+  "table_chart": {
+    "name": "Table Chart",
+    "description": "Show a chart from a table",
+    "category": "Others",
+    "widgetId": "table_chart",
+    "gridData": {
+      "w": 1,
+      "h": 2
+    },
+    "disabled": true
+  },
+  "flashing_table": {
+    "name": "Flashing Table",
+    "description": "Show a table that flashes",
+    "category": "Others",
+    "widgetId": "flashing_table",
+    "gridData": {
+      "w": 20,
+      "h": 8
+    },
+    "disabled": true
+  },
+  "financial_statements": {
+    "name": "Financial Statements",
+    "description": "All three financial statements in a single widget",
+    "widgetId": "financial_statements",
+    "category": "Equity",
+    "sub_category": "Fundamental Analysis",
+    "sdkFunc": {
+      "balance_sheet": "useEquityFundamentalBalance",
+      "income_statement": "useEquityFundamentalIncome",
+      "cash_flow_statement": "useEquityFundamentalCash"
+    },
+    "gridData": {
+      "w": 40,
+      "h": 16
+    },
+    "source": ["intrinio"]
+  },
+  "grouped_comparison": {
+    "name": "Comparison Analysis",
+    "description": "Compare financials of multiple tickers",
+    "widgetId": "grouped_comparison",
+    "category": "Equity",
+    "sub_category": "Comparison Analysis",
+    "gridData": {
+      "w": 26,
+      "h": 12
+    },
+    "source": ["fmp"]
+  }
+}

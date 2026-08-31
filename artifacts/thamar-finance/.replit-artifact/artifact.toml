@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "ثَمَر — منصة الاستدامة المالية"
+description = "منصة عربية ثنائية اللغة تساعد المستخدم على فهم وضعه المالي ومقارنة خيارات استثمارية بمؤشرات تجريبية واضحة، مع واجهة مستوحاة من هوية ثَمَر البصرية."
+version = "1.0.0"
+id = "artifacts/thamar-finance"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21069
+
+[services.development]
+run = "pnpm --filter @workspace/thamar-finance run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/thamar-finance", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/thamar-finance/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21069"
+BASE_PATH = "/"
