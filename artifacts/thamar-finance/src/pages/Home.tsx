@@ -1,8 +1,7 @@
 import { FormEvent, useState } from 'react';
-import { ArrowLeft, ArrowRight, Eye, EyeOff, LockKeyhole, Mail, ShieldCheck, Sprout, WalletCards } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Eye, EyeOff, LockKeyhole, Mail, ShieldCheck } from 'lucide-react';
 import { Link, useLocation } from 'wouter';
 
-import type { Language } from '@/data/mock-finance';
 import useLanguagePreference from '@/hooks/use-language';
 
 export default function Home() {
@@ -81,39 +80,24 @@ export default function Home() {
           </div>
         </header>
 
-        <section className="mx-auto mt-8 grid min-h-[650px] max-w-[1280px] overflow-hidden rounded-[2.4rem] bg-[var(--leaf)] shadow-[0_26px_70px_rgba(87,108,53,.12)] lg:mt-12 lg:grid-cols-[.9fr_1.1fr]">
-          <div className="relative flex flex-col justify-between overflow-hidden px-7 py-10 sm:px-14 sm:py-14 lg:px-16 lg:py-16">
+        <section className="mx-auto mt-8 grid min-h-[650px] max-w-[1280px] overflow-hidden rounded-[2.4rem] bg-[var(--leaf)] shadow-[0_26px_70px_rgba(87,108,53,.12)] lg:mt-12 lg:grid-cols-[1.1fr_.9fr]" dir="ltr">
+          <div className="relative flex flex-col items-center justify-center overflow-hidden px-7 py-10 text-center sm:px-14 sm:py-14 lg:px-16 lg:py-16">
             <div className="absolute -left-20 top-20 h-72 w-72 rounded-full border-[36px] border-[#c8e4a6] opacity-70" />
             <div className="absolute -bottom-28 right-0 h-80 w-80 rounded-full bg-[#c3dfa0] opacity-55" />
-            <div className="relative z-10">
-              <div className="mb-14 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#b4d48c] bg-[#e6f3d3] text-[var(--olive-deep)] shadow-sm">
-                <Sprout size={28} strokeWidth={1.7} aria-hidden="true" />
-              </div>
-              <p className="mb-5 font-mono text-[11px] uppercase tracking-[.22em] text-[var(--olive)]">A calmer view of money</p>
-              <h1 className="max-w-md font-display text-4xl font-semibold leading-[1.45] tracking-[-.08em] text-[var(--ink)] sm:text-5xl lg:text-[3.5rem]" data-testid="heading-home">{copy.welcome}</h1>
-              <p className="mt-6 max-w-sm text-base leading-8 text-[var(--olive-deep)]" data-testid="text-home-subtitle">{copy.subtitle}</p>
-            </div>
-            <div className="relative z-10 mt-16 flex items-end justify-between gap-5">
-              <div>
-                <div className="mb-3 flex items-center gap-2 text-xs font-medium text-[var(--olive-deep)]">
-                  <WalletCards size={15} aria-hidden="true" />
-                  <span>{isArabic ? 'دفتر مالي واضح' : 'A clear money journal'}</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="font-display text-3xl text-[var(--olive-deep)]">ثَمَر</span>
-                  <span className="h-7 w-px bg-[var(--olive)] opacity-60" />
-                  <span className="font-mono text-sm tracking-[.12em] text-[var(--olive)]">THAMAR</span>
-                </div>
-              </div>
-              <div className="hidden h-28 w-28 rounded-full border border-[#aacb82] p-2 sm:block">
-                <div className="flex h-full w-full items-center justify-center rounded-full border border-[#b8d994] text-center font-display text-xs leading-6 text-[var(--olive-deep)]">
-                  {isArabic ? <>خطوة<br />أهدأ</> : <>A calmer<br />step</>}
-                </div>
-              </div>
+            <div className="relative z-10 flex flex-col items-center">
+              <img
+                src={`${import.meta.env.BASE_URL}thamar-logo.png`}
+                alt={isArabic ? 'شعار ثَمَر' : 'Thamar logo'}
+                className="h-64 w-64 rounded-[2rem] object-cover shadow-[0_20px_45px_rgba(87,108,53,.18)] sm:h-80 sm:w-80 lg:h-[390px] lg:w-[390px]"
+                data-testid="img-home-logo"
+              />
+              <p className="mt-6 font-mono text-[10px] uppercase tracking-[.22em] text-[var(--olive)]">A calmer view of money</p>
+              <h1 className="mt-3 max-w-md font-display text-3xl font-semibold leading-[1.45] tracking-[-.08em] text-[var(--ink)] sm:text-4xl" data-testid="heading-home">{copy.welcome}</h1>
+              <p className="mt-3 max-w-sm text-sm leading-7 text-[var(--olive-deep)]" data-testid="text-home-subtitle">{copy.subtitle}</p>
             </div>
           </div>
 
-          <div className="flex items-center justify-center bg-[var(--paper)] px-6 py-10 sm:px-14 lg:px-20">
+          <div className="flex items-center justify-center bg-[var(--paper)] px-6 py-10 sm:px-14 lg:px-20" dir={isArabic ? 'rtl' : 'ltr'}>
             <form onSubmit={enterDemo} className="w-full max-w-[430px]" aria-label={copy.login}>
               <div className="mb-9">
                 <p className="mb-3 text-xs font-medium tracking-[.08em] text-[var(--olive)]">{isArabic ? 'مساحتك المالية' : 'YOUR FINANCIAL SPACE'}</p>
