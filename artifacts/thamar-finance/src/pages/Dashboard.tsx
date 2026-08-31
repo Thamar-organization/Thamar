@@ -1,5 +1,5 @@
 import { useMemo, useState, type ReactNode } from 'react';
-import { ArrowDownLeft, ArrowLeft, ArrowUpLeft, BarChart3, ChevronDown, CircleHelp, Clock3, Coins, FileText, Home, LogOut, Menu, MoreHorizontal, ShieldCheck, Sparkles, TrendingDown, TrendingUp, Wallet, X } from 'lucide-react';
+import { ArrowDownLeft, ArrowLeft, ArrowUpLeft, BarChart3, ChevronDown, CircleHelp, Clock3, Coins, Home, LogOut, Menu, MoreHorizontal, ShieldCheck, Sparkles, TrendingDown, TrendingUp, Wallet, X } from 'lucide-react';
 import { Link, useLocation } from 'wouter';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 

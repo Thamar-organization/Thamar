@@ -104,6 +104,23 @@
 }
 
 .app-shell { min-height: 100dvh; }
+
+.watermark-logo {
+  position: fixed;
+  inset-inline-start: 50%;
+  top: 32%;
+  z-index: 0;
+  transform: translateX(-50%) rotate(-7deg);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  font-family: var(--app-font-display);
+  font-size: clamp(8rem, 24vw, 24rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.1em;
+  color: hsl(var(--primary) / 0.035);
+}
 .grain::after {
   content: '';
   position: fixed;

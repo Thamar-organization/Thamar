@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Bot, CircleHelp, Info, MessageCircle, ShieldCheck, Sparkles, TrendingDown, TrendingUp } from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Bot, CircleHelp, Info, MessageCircle, ShieldCheck, Sparkles } from 'lucide-react';
 import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis } from 'recharts';
 import { Link } from 'wouter';
 
