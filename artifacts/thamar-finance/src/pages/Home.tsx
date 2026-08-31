@@ -3,10 +3,11 @@ import { ArrowLeft, ArrowRight, Eye, EyeOff, LockKeyhole, Mail, ShieldCheck, Spr
 import { Link, useLocation } from 'wouter';
 
 import type { Language } from '@/data/mock-finance';
+import useLanguagePreference from '@/hooks/use-language';
 
 export default function Home() {
   const [, setLocation] = useLocation();
-  const [language, setLanguage] = useState<Language>('ar');
+  const [language, setLanguage] = useLanguagePreference();
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

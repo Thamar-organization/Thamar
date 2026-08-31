@@ -1,10 +1,8 @@
-import { useState } from 'react';
-
 import ThamarHeader from '@/components/ThamarHeader';
-import type { Language } from '@/data/mock-finance';
+import useLanguagePreference from '@/hooks/use-language';
 
 export default function Dashboard() {
-  const [language, setLanguage] = useState<Language>('ar');
+  const [language, setLanguage] = useLanguagePreference();
   const isArabic = language === 'ar';
 
   return (

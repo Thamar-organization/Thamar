@@ -5,13 +5,14 @@ import { Link } from 'wouter';
 
 import ThamarHeader from '@/components/ThamarHeader';
 import { monthly, portfolioAccounts, portfolioMix, portfolioPlans, type Language } from '@/data/mock-finance';
+import useLanguagePreference from '@/hooks/use-language';
 
 function money(value: number, language: Language) {
   return new Intl.NumberFormat(language === 'ar' ? 'ar-SA' : 'en-US', { maximumFractionDigits: 0 }).format(value);
 }
 
 export default function Portfolio() {
-  const [language, setLanguage] = useState<Language>('ar');
+  const [language, setLanguage] = useLanguagePreference();
   const [showPlan, setShowPlan] = useState(false);
   const isArabic = language === 'ar';
   const t = isArabic

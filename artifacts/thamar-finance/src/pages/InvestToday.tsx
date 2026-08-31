@@ -5,6 +5,7 @@ import { Link } from 'wouter';
 
 import ThamarHeader from '@/components/ThamarHeader';
 import { marketIndicators, trendData, type Language } from '@/data/mock-finance';
+import useLanguagePreference from '@/hooks/use-language';
 
 const assetIds = ['gold', 'equities', 'bitcoin', 'diamond', 'oil'] as const;
 
@@ -70,7 +71,7 @@ const copy = {
 };
 
 export default function InvestToday() {
-  const [language, setLanguage] = useState<Language>('ar');
+  const [language, setLanguage] = useLanguagePreference();
   const [activeId, setActiveId] = useState<(typeof assetIds)[number]>('gold');
   const [question, setQuestion] = useState('');
   const [asked, setAsked] = useState(false);
