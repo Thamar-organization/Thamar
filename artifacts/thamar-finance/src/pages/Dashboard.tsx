@@ -11,9 +11,10 @@ const labels = {
   ar: {
     overview: 'نظرة عامة', dashboard: 'لوحة اليوم', investments: 'استثماراتي', journal: 'دفتر المصروفات', settings: 'الإعدادات',
     hello: 'مساء الخير، سارة', intro: 'هذه صورة هادئة لأموالك هذا الشهر.', demo: 'بيانات توضيحية — ليست نصيحة مالية',
+    projectEyebrow: 'اسم المشروع', projectName: 'ثَمَر', mission: 'هدف المشروع هو زيادة الوعي والرقابة الفعلية على السوق المالي وتغيرات الاقتصاد العالمي لتحقيق الاستدامة المالية بشكل ذكي.',
     month: 'أغسطس 2025', income: 'الدخل الشهري', expenses: 'المصروفات', savings: 'المدخرات', emergency: 'صندوق الطوارئ', investable: 'المتاح للاستثمار',
     compared: 'مقارنة بالشهر الماضي', rate: 'معدل الادخار', score: 'مؤشر الاستدامة المالية', healthy: 'وضعك المالي يتحسن', scoreNote: 'أنت على مسار جيد. الاستمرارية أهم من الكمال.',
-    markets: 'نبض الأسواق', marketsNote: 'مؤشرات مختارة من مصادر بيانات عامة', trend: 'اتجاه السوق', trendNote: 'حركة مؤشر مركب للتوضيح فقط', month1: 'شهر', months3: '3 أشهر', months6: '6 أشهر',
+    markets: 'خطط الاستثمار', marketsNote: 'خيارات استثمارية مرتبطة بقراءة المؤشرات', trend: 'اتجاه السوق', trendNote: 'حركة مؤشر مركب للتوضيح فقط', month1: 'شهر', months3: '3 أشهر', months6: '6 أشهر',
     explore: 'مقارنة خيارات الاستثمار', exploreNote: 'اقتراحات مبنية على أرقام تجريبية وأهداف شائعة', suitable: 'الأنسب لك', fit: 'ملاءمة', risk: 'مستوى المخاطرة', learn: 'لماذا هذا الخيار؟',
     suggestion: 'اقتراح ثَمَر', suggestionText: 'قبل زيادة استثمارك، ارفع صندوق الطوارئ إلى ستة أشهر من المصروفات.', seePlan: 'شاهد الخطة', dataNote: 'آخر تحديث تجريبي منذ لحظات',
     logout: 'العودة لتسجيل الدخول', lang: 'English', profile: 'سارة م.',
@@ -21,9 +22,10 @@ const labels = {
   en: {
     overview: 'Overview', dashboard: 'Today’s dashboard', investments: 'My investments', journal: 'Spending journal', settings: 'Settings',
     hello: 'Good evening, Sarah', intro: 'A calm view of your money this month.', demo: 'Illustrative data — not financial advice',
+    projectEyebrow: 'PROJECT NAME', projectName: 'THAMAR', mission: 'The project aims to increase awareness and active oversight of financial markets and global economic changes to achieve smarter financial sustainability.',
     month: 'August 2025', income: 'Monthly income', expenses: 'Expenses', savings: 'Savings', emergency: 'Emergency fund', investable: 'Ready to invest',
     compared: 'vs. last month', rate: 'Savings rate', score: 'Financial sustainability', healthy: 'Your finances are improving', scoreNote: 'You are on a good path. Consistency beats perfection.',
-    markets: 'Market pulse', marketsNote: 'Selected indicators from public data sources', trend: 'Market trend', trendNote: 'Composite movement for illustration only', month1: '1 month', months3: '3 months', months6: '6 months',
+    markets: 'Investment plans', marketsNote: 'Investment options informed by market indicators', trend: 'Market trend', trendNote: 'Composite movement for illustration only', month1: '1 month', months3: '3 months', months6: '6 months',
     explore: 'Compare investment options', exploreNote: 'Suggestions based on demo numbers and common goals', suitable: 'Best fit', fit: 'Fit', risk: 'Risk level', learn: 'Why this option?',
     suggestion: 'A note from Thamar', suggestionText: 'Before increasing investments, build your emergency fund toward six months of expenses.', seePlan: 'View the plan', dataNote: 'Demo data refreshed moments ago',
     logout: 'Return to sign in', lang: 'العربية', profile: 'Sarah M.',
@@ -138,6 +140,14 @@ export default function Dashboard() {
           )}
 
           <div className="mx-auto max-w-[1240px]">
+            <section className="surface mt-8 flex flex-col items-center gap-5 rounded-[1.35rem] p-5 text-center sm:flex-row sm:text-start" data-testid="section-project-overview">
+              <img src={`${import.meta.env.BASE_URL}thamar-logo.png`} alt={isArabic ? 'شعار ثَمَر' : 'Thamar logo'} className="h-20 w-20 shrink-0 rounded-2xl object-cover shadow-sm" data-testid="img-project-logo" />
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[.18em] text-[var(--olive)]">{t.projectEyebrow}</p>
+                <h2 className="mt-1 font-display text-2xl font-semibold tracking-[-.08em] text-[var(--ink)]" data-testid="text-project-name">{t.projectName}</h2>
+                <p className="mt-2 max-w-4xl text-sm leading-7 text-[var(--muted-foreground)]" data-testid="text-project-mission">{t.mission}</p>
+              </div>
+            </section>
             <section className="mb-7 mt-10 flex flex-col justify-between gap-5 sm:mt-14 md:flex-row md:items-end">
               <div className="rise">
                 <p className="mb-3 flex items-center gap-2 text-xs font-medium text-[var(--olive)]"><Clock3 size={14} />{t.month}</p>
