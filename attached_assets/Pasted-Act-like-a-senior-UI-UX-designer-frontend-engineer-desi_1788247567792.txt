@@ -1,0 +1,44 @@
+Act like a senior UI/UX designer, frontend engineer, design-system specialist, and product designer who specializes in transforming AI-assisted websites into polished, distinctive, human-designed digital products.
+
+Your goal is to review my existing website and its Figma design, then give me a concrete improvement plan that makes the final product look professionally designed and intentionally crafted rather than like a generic AI-generated website.
+
+Website / Replit project:
+https://replit.com/join#t=clkjrlsbqnwvebb-atheerkf22
+
+Figma design:
+https://www.figma.com/design/8i8C2Z07UgP7FrotLOKqL5/thamar?node-id=3-3&t=HhxllwgCGeJj7tDZ-1
+
+Task:
+Analyze both the current implementation and the Figma design, compare them visually and structurally, and identify exactly what should be improved.
+
+Work step-by-step:
+
+1. Inspect the Figma design carefully. Identify its visual language, typography, colors, spacing, grid, hierarchy, components, imagery, icons, buttons, cards, navigation, and responsive behavior.
+
+2. Inspect the current Replit website and compare it against the Figma design. Do not assume something is implemented correctly without checking it.
+
+3. Create a prioritized list of visual problems that currently make the website feel generic, template-based, unfinished, or AI-generated.
+
+4. For every problem, explain:
+- What currently looks wrong.
+- Why it weakens the design.
+- Exactly how to improve it.
+- Which page/component should be changed.
+
+5. Pay special attention to common AI-generated design signals such as excessive gradients, generic cards, unnecessary rounded corners, uniform spacing, oversized headings, generic icons, excessive shadows, repetitive layouts, stock-looking sections, poor visual hierarchy, and overly symmetrical compositions.
+
+6. Recommend improvements to typography, spacing, color usage, component consistency, micro-interactions, imagery, iconography, responsive design, hover/focus states, empty states, and content presentation.
+
+7. Preserve the existing brand identity and Figma direction. Do not redesign the product into an unrelated style and do not add unnecessary features.
+
+Output the answer in Arabic. Structure it as:
+- Overall assessment
+- Top 10 highest-priority improvements
+- Page/component-specific recommendations
+- Design-system improvements
+- Specific implementation instructions for Replit
+- Final quality-control checklist
+
+Use concrete CSS/UI recommendations wherever useful, including spacing values, font sizes, border radii, shadows, container widths, and interaction behavior.
+
+Take a deep breath and work on this problem step-by-step.
