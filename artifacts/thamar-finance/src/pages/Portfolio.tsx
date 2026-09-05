@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { ArrowDownLeft, ArrowLeft, ArrowRight, ArrowUpRight, BarChart3, ChevronDown, ShieldCheck, Sparkles, Wallet, WalletCards } from 'lucide-react';
-import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
+import { ArrowDownLeft, ArrowLeft, ArrowRight, ArrowUpRight, BarChart3, ChevronDown, ShieldCheck, Wallet, WalletCards } from 'lucide-react';
 import { Link } from 'wouter';
 
 import ThamarHeader from '@/components/ThamarHeader';
@@ -36,20 +35,16 @@ export default function Portfolio() {
   const isArabic = language === 'ar';
   const t = isArabic
     ? {
-        eyebrow: 'مساحتك المالية · نظرة بعيدة',
         title: 'محفظتك المستقبلية',
         intro: 'تابع ما تبنيه اليوم من أجل مستقبل مالي أكثر استدامة.',
-        demo: 'بيانات تجريبية — ليست توصية مالية',
         balance: 'إجمالي الرصيد',
         income: 'الدخل',
         expenses: 'المصروفات',
         rate: 'معدل الادخار',
         change: 'من الشهر الماضي',
         diagram: 'توزيع محفظتك',
-        diagramNote: 'نسبة كل مساحة من إجمالي رصيدك التجريبي',
         accounts: 'حساباتك',
         all: 'عرض الكل',
-        noTransactions: 'لا توجد معاملات حقيقية في هذه النسخة.',
         cash: 'كاش',
         saving: 'ادخار',
         investment: 'استثمار',
@@ -61,24 +56,20 @@ export default function Portfolio() {
         safeText: 'نوّع محفظتك بين الادخار والصكوك والأسهم، واحتفظ بصندوق طوارئ يغطي ستة أشهر قبل رفع المخاطر.',
         seePlan: 'اعرض خطتي المقترحة',
         hidePlan: 'إخفاء الخطة',
-        planShown: 'خطتك التجريبية: ادخر ١٬٦٠٠ ر.س، ثم وزّع ٣٥٪ ذهب و٤٠٪ أسهم و٢٥٪ صكوك.',
+        planShown: 'التوزيع المقترح: ادخر ١٬٦٠٠ ر.س، ثم وزّع ٣٥٪ ذهب و٤٠٪ أسهم و٢٥٪ صكوك.',
         portfolio: 'محفظة',
       }
     : {
-        eyebrow: 'YOUR MONEY SPACE · LONG VIEW',
         title: 'Your future portfolio',
         intro: 'Track what you are building today for a more sustainable financial future.',
-        demo: 'Demo data — not financial advice',
         balance: 'Total balance',
         income: 'Income',
         expenses: 'Expenses',
         rate: 'Saving rate',
         change: 'from last month',
         diagram: 'Your portfolio mix',
-        diagramNote: 'Share of each space in your illustrative balance',
         accounts: 'Your accounts',
         all: 'View all',
-        noTransactions: 'There are no real transactions in this version.',
         cash: 'Cash',
         saving: 'Savings',
         investment: 'Investments',
@@ -90,7 +81,7 @@ export default function Portfolio() {
         safeText: 'Balance savings, sukuk, and equities, and keep a six-month emergency fund before increasing risk.',
         seePlan: 'See my suggested plan',
         hidePlan: 'Hide plan',
-        planShown: 'Your demo plan: save SAR 1,600, then allocate 35% gold, 40% equities, and 25% sukuk.',
+        planShown: 'Suggested allocation: save SAR 1,600, then allocate 35% gold, 40% equities, and 25% sukuk.',
         portfolio: 'Portfolio',
       };
 
@@ -100,6 +91,12 @@ export default function Portfolio() {
     { id: 'expenses', label: t.expenses, value: formatMoney(4250, language), suffix: isArabic ? 'ر.س' : 'SAR', color: '#f8efd1', icon: <ArrowUpRight size={16} /> },
     { id: 'rate', label: t.rate, value: formatNumber(monthly.savingsRate, language, 1), suffix: '%', color: '#e4edd6', icon: <BarChart3 size={16} /> },
   ];
+  let segmentStart = 0;
+  const portfolioGradient = `conic-gradient(${portfolioMix.map((entry) => {
+    const start = segmentStart;
+    segmentStart += entry.value;
+    return `${entry.color} ${start}% ${segmentStart}%`;
+  }).join(', ')})`;
 
   return (
     <main className={`app-shell grain page-enter ${isArabic ? 'rtl' : 'ltr'}`} lang={language}>
@@ -108,14 +105,10 @@ export default function Portfolio() {
         <div className="relative z-10 mx-auto max-w-[1240px]">
           <ThamarHeader language={language} active="portfolio" onLanguageToggle={() => setLanguage(isArabic ? 'en' : 'ar')} />
 
-          <section className="mt-9 flex flex-col justify-between gap-4 sm:mt-12 md:flex-row md:items-end">
+          <section className="mt-9 sm:mt-12">
             <div>
-              <p className="mb-2 text-[10px] font-semibold uppercase tracking-[.18em] text-[var(--olive)]">{t.eyebrow}</p>
               <h1 className="font-display text-3xl font-semibold tracking-[-.08em] text-[var(--ink)] sm:text-[2.45rem]" data-testid="heading-future-portfolio">{t.title}</h1>
               <p className="mt-2 max-w-xl text-sm leading-7 text-[var(--muted-foreground)]" data-testid="text-portfolio-intro">{t.intro}</p>
-            </div>
-            <div className="flex items-center gap-2 self-start rounded-full border border-[#d7e3bd] bg-[#f0f6e6] px-3 py-2 text-[11px] text-[var(--olive-deep)] md:self-auto" data-testid="status-portfolio-demo">
-              <span className="h-2 w-2 rounded-full bg-[var(--gold)]" />{t.demo}
             </div>
           </section>
 
@@ -126,23 +119,19 @@ export default function Portfolio() {
             <div className="relative flex flex-col justify-between gap-2 sm:flex-row sm:items-start">
               <div>
                 <h2 className="font-display text-xl font-semibold tracking-[-.06em] text-[var(--ink)]">{t.diagram}</h2>
-                <p className="mt-1 text-xs text-[var(--muted-foreground)]">{t.diagramNote}</p>
               </div>
               <div className="text-end">
                 <p className="text-[10px] text-[var(--muted-foreground)]">{t.balance}</p>
                 <p className="number mt-1 text-lg text-[var(--ink)]" dir="ltr">{formatMoney(monthly.income + monthly.emergency + monthly.investable, language)} <span className="text-[10px]">{isArabic ? 'ر.س' : 'SAR'}</span></p>
               </div>
             </div>
-            <div className="relative mt-3 grid items-center gap-5 lg:grid-cols-[1fr_1.15fr]">
-              <div className="h-[230px] min-w-0 sm:h-[270px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie data={portfolioMix} dataKey="value" nameKey={language} innerRadius={65} outerRadius={103} paddingAngle={4} stroke="none">
-                      {portfolioMix.map((entry) => <Cell key={entry.id} fill={entry.color} />)}
-                    </Pie>
-                    <Tooltip formatter={(value: number) => [`${formatNumber(value, language)}%`, isArabic ? 'النسبة' : 'Share']} contentStyle={{ borderRadius: 12, border: '1px solid #dfe6ce', background: '#fbfaf4', fontSize: 11, direction: isArabic ? 'rtl' : 'ltr' }} />
-                  </PieChart>
-                </ResponsiveContainer>
+            <div className="relative mt-4 grid items-center gap-5 lg:grid-cols-[.65fr_1.35fr]">
+              <div className="flex min-h-[180px] items-center justify-center sm:min-h-[205px]">
+                <div className="relative h-40 w-40 rounded-full shadow-[0_14px_35px_rgba(72,82,43,.1)] sm:h-48 sm:w-48" style={{ background: portfolioGradient }} role="img" aria-label={t.diagram}>
+                  <div className="absolute inset-[24%] flex items-center justify-center rounded-full bg-[var(--paper)] shadow-[inset_0_0_0_1px_rgba(123,136,73,.12)]">
+                    <span className="number text-sm font-semibold text-[var(--olive-deep)]">{formatNumber(100, language)}%</span>
+                  </div>
+                </div>
               </div>
               <div className="grid grid-cols-3 gap-2 sm:gap-3">
                 {portfolioMix.map((entry) => (
@@ -174,7 +163,6 @@ export default function Portfolio() {
             <div className="flex items-center justify-between gap-3">
               <div>
                 <h2 className="font-display text-lg font-semibold tracking-[-.06em] text-[var(--ink)]">{t.accounts}</h2>
-                <p className="mt-1 text-xs text-[var(--muted-foreground)]">{t.noTransactions}</p>
               </div>
               <button type="button" className="flex items-center gap-1 text-xs font-semibold text-[var(--olive)]" data-testid="button-view-accounts">{t.all}<ChevronDown size={14} /></button>
             </div>
@@ -198,7 +186,6 @@ export default function Portfolio() {
               <div>
                 <h2 className="font-display text-xl font-semibold tracking-[-.06em] text-[var(--ink)] sm:text-2xl">{t.plans}</h2>
               </div>
-              <span className="hidden text-[10px] text-[var(--muted-foreground)] sm:block">{t.demo}</span>
             </div>
             <div className="grid gap-3 md:grid-cols-3">
               {portfolioPlans.map((plan) => (
@@ -217,7 +204,7 @@ export default function Portfolio() {
             </div>
           </section>
 
-          <section className="mt-6 grid gap-4 pb-12 lg:grid-cols-[1.3fr_.7fr]">
+          <section className="mt-6 pb-12">
             <article className="rounded-2xl bg-[var(--olive)] p-6 text-[var(--paper)] sm:p-7" data-testid="card-safe-recommendation">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 text-[var(--gold-soft)]"><ShieldCheck size={20} /></div>
@@ -229,11 +216,6 @@ export default function Portfolio() {
                 {showPlan ? t.hidePlan : t.seePlan}{isArabic ? <ArrowLeft size={14} /> : <ArrowRight size={14} />}
               </button>
               {showPlan && <p className="mt-4 rounded-xl bg-white/10 p-3 text-xs leading-6 text-[#f4f6e9]" data-testid="text-suggested-plan">{t.planShown}</p>}
-            </article>
-            <article className="surface rounded-2xl p-6" data-testid="card-portfolio-note">
-              <div className="flex items-center gap-2 text-[var(--olive)]"><Sparkles size={17} /><span className="font-mono text-[9px] tracking-[.16em]">THAMAR NOTE</span></div>
-              <p className="mt-5 text-sm leading-7 text-[var(--muted-foreground)]">{isArabic ? 'تذكّر: التنويع يساعد على إدارة المخاطر، لكنه لا يلغيها.' : 'Remember: diversification helps manage risk, but it never removes it.'}</p>
-              <Link href="/invest-today" className="mt-6 inline-flex items-center gap-2 text-xs font-semibold text-[var(--olive)] underline decoration-[var(--gold)] underline-offset-4" data-testid="link-portfolio-to-today">{isArabic ? 'شاهد استثمارك اليوم' : 'See today’s investments'}{isArabic ? <ArrowLeft size={14} /> : <ArrowRight size={14} />}</Link>
             </article>
           </section>
         </div>

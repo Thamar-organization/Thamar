@@ -1,4 +1,5 @@
 import ThamarHeader from '@/components/ThamarHeader';
+import MarketTicker from '@/components/MarketTicker';
 import useLanguagePreference from '@/hooks/use-language';
 
 export default function Dashboard() {
@@ -24,6 +25,7 @@ export default function Dashboard() {
                 ? 'ثَمَر منصة مالية تهدف إلى زيادة الوعي والرقابة الفعلية على السوق المالي وتغيرات الاقتصاد العالمي لتحقيق الاستدامة المالية بشكل ذكي.'
                 : 'Thamar is a financial platform built to increase awareness and active oversight of financial markets and global economic changes for smarter financial sustainability.'}
             </p>
+            <MarketTicker language={language} />
           </section>
         </div>
       </div>

@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: market
+    description: Live market quote operations
 paths:
   /healthz:
     get:
@@ -24,6 +26,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /market-quotes:
+    get:
+      operationId: getMarketQuotes
+      tags: [market]
+      summary: Current market quotes
+      description: Returns recent public quotes for the market instruments displayed by Thamar.
+      responses:
+        "200":
+          description: Current market quote snapshot
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MarketQuotesResponse"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +48,73 @@ components:
           type: string
       required:
         - status
+    MarketPoint:
+      type: object
+      properties:
+        time:
+          type: string
+          format: date-time
+        price:
+          type: number
+      required:
+        - time
+        - price
+    MarketQuote:
+      type: object
+      properties:
+        id:
+          type: string
+          enum: [gold, equities, bitcoin, oil]
+        symbol:
+          type: string
+        nameAr:
+          type: string
+        nameEn:
+          type: string
+        price:
+          type: number
+        previousClose:
+          type: number
+        changePercent:
+          type: number
+        currency:
+          type: string
+        marketTime:
+          type: string
+          format: date-time
+        history:
+          type: array
+          items:
+            $ref: "#/components/schemas/MarketPoint"
+      required:
+        - id
+        - symbol
+        - nameAr
+        - nameEn
+        - price
+        - previousClose
+        - changePercent
+        - currency
+        - marketTime
+        - history
+    MarketQuotesResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [live, partial, unavailable]
+        updatedAt:
+          type: string
+          format: date-time
+        source:
+          type: string
+        quotes:
+          type: array
+          items:
+            $ref: "#/components/schemas/MarketQuote"
+      required:
+        - status
+        - updatedAt
+        - source
+        - quotes
 

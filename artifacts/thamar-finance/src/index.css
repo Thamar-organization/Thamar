@@ -146,6 +146,28 @@
 .rtl { direction: rtl; }
 .ltr { direction: ltr; }
 
+.market-ticker-track {
+  animation: marketTicker 34s linear infinite;
+  will-change: transform;
+}
+.market-ticker:hover .market-ticker-track {
+  animation-play-state: paused;
+}
+@keyframes marketTicker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .market-ticker {
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  .market-ticker-track {
+    animation: none;
+  }
+}
+
 @media (max-width: 767px) {
   .watermark-logo {
     top: 28%;

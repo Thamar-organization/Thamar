@@ -1,0 +1,1 @@
+- [Generated market-query hooks](generated-market-query-hooks.md) — Orval React Query hooks need an explicit generated query key when custom query options are passed.
