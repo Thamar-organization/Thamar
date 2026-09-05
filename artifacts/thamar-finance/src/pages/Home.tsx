@@ -61,10 +61,13 @@ export default function Home() {
     <main className={`app-shell grain page-enter ${isArabic ? 'rtl' : 'ltr'}`} lang={language}>
       <div className="min-h-[100dvh] px-4 py-4 sm:px-8 sm:py-8 lg:px-14 lg:py-10">
         <header className="mx-auto flex max-w-[1280px] items-center justify-between px-1 py-1">
-          <Link href="/" className="flex items-center gap-2 no-underline" data-testid="link-home-logo" aria-label="Thamar home">
-            <span className="font-display text-lg font-semibold tracking-[-.08em]" style={{ color: 'var(--olive-deep)' }}>ثَمَر</span>
-            <span className="h-5 w-px bg-[var(--olive)] opacity-50" />
-            <span className="font-mono text-[10px] tracking-[.18em] text-[var(--olive)]">THAMAR</span>
+          <Link href="/" className="flex items-center no-underline" data-testid="link-home-logo" aria-label="Thamar home">
+            <img
+              src={`${import.meta.env.BASE_URL}thamar-brand-transparent.png`}
+              alt={isArabic ? 'شعار ثَمَر' : 'Thamar logo'}
+              className="h-16 w-16 object-contain sm:h-20 sm:w-20"
+              data-testid="img-home-header-logo"
+            />
           </Link>
           <div className="flex items-center gap-3 text-xs text-[var(--muted-foreground)]">
             <span className="hidden sm:inline" data-testid="text-demo-note">{copy.note}</span>
@@ -86,9 +89,9 @@ export default function Home() {
             <div className="absolute -bottom-28 right-0 h-80 w-80 rounded-full bg-[#c3dfa0] opacity-55" />
             <div className="relative z-10 flex flex-col items-center">
               <img
-                src={`${import.meta.env.BASE_URL}thamar-logo.png`}
+                src={`${import.meta.env.BASE_URL}thamar-brand-transparent.png`}
                 alt={isArabic ? 'شعار ثَمَر' : 'Thamar logo'}
-                className="h-64 w-64 rounded-[2rem] object-cover shadow-[0_20px_45px_rgba(87,108,53,.18)] sm:h-80 sm:w-80 lg:h-[390px] lg:w-[390px]"
+                className="h-64 w-64 object-contain drop-shadow-[0_20px_28px_rgba(87,108,53,.15)] sm:h-80 sm:w-80 lg:h-[390px] lg:w-[390px]"
                 data-testid="img-home-logo"
               />
               <p className="mt-6 font-mono text-[10px] uppercase tracking-[.22em] text-[var(--olive)]">A calmer view of money</p>

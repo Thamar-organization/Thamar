@@ -58,10 +58,13 @@ export default function Privacy() {
     <main className={`app-shell grain page-enter ${isArabic ? 'rtl' : 'ltr'}`} lang={language}>
       <div className="min-h-[100dvh] px-5 py-5 sm:px-10 sm:py-8">
         <header className="mx-auto flex max-w-[1160px] items-center justify-between">
-          <Link href="/" className="flex items-center gap-2" data-testid="link-privacy-logo">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--gold-soft)] text-[var(--olive-deep)]"><Sprout size={18} /></span>
-            <span className="font-display text-base font-semibold tracking-[-.08em] text-[var(--ink)]">ثَمَر</span>
-            <span className="font-mono text-[9px] tracking-[.17em] text-[var(--olive)]">THAMAR</span>
+          <Link href="/" className="flex items-center" data-testid="link-privacy-logo">
+            <img
+              src={`${import.meta.env.BASE_URL}thamar-brand-transparent.png`}
+              alt={isArabic ? 'شعار ثَمَر' : 'Thamar logo'}
+              className="h-16 w-16 object-contain sm:h-20 sm:w-20"
+              data-testid="img-privacy-logo"
+            />
           </Link>
           <button type="button" onClick={() => setLanguage(isArabic ? 'en' : 'ar')} className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-3 py-2 text-xs font-medium text-[var(--olive-deep)] transition hover:border-[var(--olive)]" data-testid="button-privacy-language">{content.lang}</button>
         </header>

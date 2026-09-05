@@ -104,7 +104,7 @@ export default function Portfolio() {
   return (
     <main className={`app-shell grain page-enter ${isArabic ? 'rtl' : 'ltr'}`} lang={language}>
       <div className="relative min-h-[100dvh] overflow-hidden px-4 py-4 sm:px-8 sm:py-8">
-        <img className="watermark-logo" src={`${import.meta.env.BASE_URL}thamar-brand.png`} alt="" aria-hidden="true" />
+        <img className="watermark-logo" src={`${import.meta.env.BASE_URL}thamar-brand-transparent.png`} alt="" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-[1240px]">
           <ThamarHeader language={language} active="portfolio" onLanguageToggle={() => setLanguage(isArabic ? 'en' : 'ar')} />
 

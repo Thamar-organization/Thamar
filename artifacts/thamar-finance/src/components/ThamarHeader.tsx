@@ -32,7 +32,7 @@ export default function ThamarHeader({
     <header className="relative z-10 flex flex-col gap-4 border-b border-[var(--line)] pb-4 sm:flex-row sm:items-center sm:justify-between sm:pb-5">
       <Link href="/dashboard" className="flex w-fit items-center gap-2" data-testid="link-shared-logo">
         <img
-          src={`${import.meta.env.BASE_URL}thamar-brand.png`}
+          src={`${import.meta.env.BASE_URL}thamar-brand-transparent.png`}
           alt={isArabic ? 'شعار ثَمَر' : 'Thamar logo'}
           className="h-14 w-14 shrink-0 object-contain mix-blend-multiply sm:h-16 sm:w-16"
           data-testid="img-shared-logo"
