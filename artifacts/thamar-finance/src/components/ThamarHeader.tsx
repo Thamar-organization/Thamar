@@ -1,4 +1,3 @@
-import { Sprout } from 'lucide-react';
 import { Link } from 'wouter';
 
 import type { Language } from '@/data/mock-finance';
@@ -32,13 +31,12 @@ export default function ThamarHeader({
   return (
     <header className="relative z-10 flex flex-col gap-4 border-b border-[var(--line)] pb-4 sm:flex-row sm:items-center sm:justify-between sm:pb-5">
       <Link href="/dashboard" className="flex w-fit items-center gap-2" data-testid="link-shared-logo">
-        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--gold-soft)] text-[var(--olive-deep)]">
-          <Sprout size={18} strokeWidth={1.8} aria-hidden="true" />
-        </span>
-        <span>
-          <span className="block font-display text-base font-semibold leading-none tracking-[-.08em] text-[var(--ink)]">ثَمَر</span>
-          <span className="font-mono text-[8px] tracking-[.16em] text-[var(--olive)]">THAMAR</span>
-        </span>
+        <img
+          src={`${import.meta.env.BASE_URL}thamar-brand.png`}
+          alt={isArabic ? 'شعار ثَمَر' : 'Thamar logo'}
+          className="h-14 w-14 shrink-0 object-contain mix-blend-multiply sm:h-16 sm:w-16"
+          data-testid="img-shared-logo"
+        />
       </Link>
 
       <nav className="order-3 flex w-full gap-1 overflow-x-auto sm:order-2 sm:w-auto" aria-label={isArabic ? 'التنقل الرئيسي' : 'Main navigation'}>

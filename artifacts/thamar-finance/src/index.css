@@ -108,18 +108,16 @@
 .watermark-logo {
   position: fixed;
   inset-inline-start: 50%;
-  top: 32%;
+  top: 24%;
   z-index: 0;
   transform: translateX(-50%) rotate(-7deg);
   pointer-events: none;
   user-select: none;
-  white-space: nowrap;
-  font-family: var(--app-font-display);
-  font-size: clamp(8rem, 24vw, 24rem);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.1em;
-  color: hsl(var(--primary) / 0.035);
+  width: clamp(19rem, 38vw, 42rem);
+  height: auto;
+  opacity: .055;
+  mix-blend-mode: multiply;
+  filter: saturate(.8) contrast(.9);
 }
 .grain::after {
   content: '';
@@ -149,6 +147,11 @@
 .ltr { direction: ltr; }
 
 @media (max-width: 767px) {
+  .watermark-logo {
+    top: 28%;
+    width: 86vw;
+    opacity: .045;
+  }
   .mobile-scroll { overflow-x: auto; scrollbar-width: none; }
   .mobile-scroll::-webkit-scrollbar { display: none; }
 }

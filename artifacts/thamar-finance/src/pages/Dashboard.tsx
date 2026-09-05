@@ -8,7 +8,7 @@ export default function Dashboard() {
   return (
     <main className={`app-shell grain page-enter ${isArabic ? 'rtl' : 'ltr'}`} lang={language}>
       <div className="relative min-h-[100dvh] overflow-hidden px-4 py-4 sm:px-8 sm:py-8">
-        <div className="watermark-logo" aria-hidden="true">THAMAR</div>
+        <img className="watermark-logo" src={`${import.meta.env.BASE_URL}thamar-brand.png`} alt="" aria-hidden="true" />
         <div className="relative z-10 mx-auto flex min-h-[calc(100dvh-2rem)] max-w-[1240px] flex-col sm:min-h-[calc(100dvh-4rem)]">
           <ThamarHeader language={language} active="home" onLanguageToggle={() => setLanguage(isArabic ? 'en' : 'ar')} />
 
