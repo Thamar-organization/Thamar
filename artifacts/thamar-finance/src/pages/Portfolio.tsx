@@ -67,7 +67,6 @@ export default function Portfolio() {
   const t = isArabic
     ? {
         title: 'محفظتك المستقبلية',
-        intro: 'تابع ما تبنيه اليوم من أجل مستقبل مالي أكثر استدامة. استكشف كيف تنمو أصولك مع مرور الوقت.',
         balance: 'إجمالي الرصيد',
         income: 'الدخل',
         expenses: 'المصروفات',
@@ -90,7 +89,6 @@ export default function Portfolio() {
         hidePlan: 'إخفاء الخطة',
         planShown: 'التوزيع المقترح: ادخر ١٬٦٠٠ ر.س، ثم وزّع ٣٥٪ ذهب و٤٠٪ أسهم و٢٥٪ صكوك.',
         portfolio: 'محفظة',
-        guidance: 'توجيهات ثَمَر',
         investmentDetails: 'تفاصيل الاستثمارات',
         investmentDetailsHint: 'اضغط لعرض الأصول المستثمر فيها',
         investedIn: 'تم الاستثمار في',
@@ -98,7 +96,6 @@ export default function Portfolio() {
       }
     : {
         title: 'Your future portfolio',
-        intro: 'Track what you are building today for a more sustainable financial future. Explore how your assets grow over time.',
         balance: 'Total balance',
         income: 'Income',
         expenses: 'Expenses',
@@ -121,7 +118,6 @@ export default function Portfolio() {
         hidePlan: 'Hide plan',
         planShown: 'Suggested allocation: save SAR 1,600, then allocate 35% gold, 40% equities, and 25% sukuk.',
         portfolio: 'Portfolio',
-        guidance: 'THAMAR GUIDANCE',
         investmentDetails: 'Investment details',
         investmentDetailsHint: 'Select to see where your money is invested',
         investedIn: 'Invested in',
@@ -198,7 +194,6 @@ export default function Portfolio() {
           
           <header className="rise delay-1 mb-10 lg:mb-12">
             <h1 className="font-display text-3xl font-bold tracking-[-.04em] text-[var(--ink)] sm:text-4xl lg:text-[2.75rem]" data-testid="heading-future-portfolio">{t.title}</h1>
-            <p className="mt-3 max-w-2xl text-base leading-relaxed text-[var(--muted-foreground)]" data-testid="text-portfolio-intro">{t.intro}</p>
           </header>
 
           <div className="flex flex-col gap-8 lg:gap-12">
@@ -212,7 +207,6 @@ export default function Portfolio() {
               <div className="relative z-10 mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
                 <div>
                   <h2 className="font-display text-2xl font-bold tracking-[-.04em] text-[var(--ink)]">{t.diagram}</h2>
-                  <p className="mt-1 text-sm text-[var(--muted-foreground)]">{isArabic ? 'توزيع الأصول الحالي عبر جميع حساباتك' : 'Current asset allocation across all your accounts'}</p>
                 </div>
                 <div className="rounded-2xl bg-[var(--leaf-pale)]/50 px-5 py-3 text-end">
                   <p className="text-xs font-medium text-[var(--muted-foreground)]">{t.balance}</p>
@@ -336,7 +330,6 @@ export default function Portfolio() {
               <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 px-2">
                 <div>
                   <h2 className="font-display text-2xl font-bold tracking-[-.04em] text-[var(--ink)]">{t.plans}</h2>
-                  <p className="mt-1 text-sm text-[var(--muted-foreground)]">{isArabic ? 'استراتيجيات مصممة لأهدافك' : 'Strategies tailored to your goals'}</p>
                 </div>
                 <div className="relative">
                   <button 
@@ -440,7 +433,6 @@ export default function Portfolio() {
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--paper)]/15 text-[var(--gold-soft)] shadow-inner backdrop-blur-sm">
                       <ShieldCheck size={24} strokeWidth={2} />
                     </div>
-                    <span className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[var(--gold-soft)] opacity-90">{t.guidance}</span>
                   </div>
                   <h2 className="font-display text-2xl font-bold leading-tight tracking-[-.04em]">{t.safe}</h2>
                   <p className="mt-4 max-w-3xl text-sm leading-relaxed text-[#e5edcf] opacity-90">{t.safeText}</p>

@@ -9,6 +9,8 @@ import InvestToday from '@/pages/InvestToday';
 import NotFound from '@/pages/not-found';
 import Privacy from '@/pages/Privacy';
 import Portfolio from '@/pages/Portfolio';
+import Calculators from '@/pages/Calculators';
+import Insights from '@/pages/Insights';
 import {
   Route,
   Switch,
@@ -27,7 +29,9 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/portfolio" component={Portfolio} />
+        <Route path="/calculators" component={Calculators} />
         <Route path="/invest-today" component={InvestToday} />
+        <Route path="/insights" component={Insights} />
         <Route path="/privacy" component={Privacy} />
         <Route component={NotFound} />
       </Switch>

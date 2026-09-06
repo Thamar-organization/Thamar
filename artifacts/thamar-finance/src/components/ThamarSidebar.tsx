@@ -1,20 +1,24 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
-import { LayoutDashboard, Wallet, TrendingUp, LogIn, LogOut, Languages, Menu, X, ArrowLeftRight } from 'lucide-react';
+import { LayoutDashboard, Wallet, TrendingUp, LogIn, LogOut, Languages, Menu, X, ArrowLeftRight, Calculator, Newspaper } from 'lucide-react';
 import type { Language } from '@/data/mock-finance';
 
-type HeaderPage = 'home' | 'portfolio' | 'today';
+type HeaderPage = 'home' | 'portfolio' | 'today' | 'calculators' | 'insights';
 
 const navigation = {
   ar: [
     { id: 'home' as HeaderPage, href: '/dashboard', label: 'الرئيسية', icon: LayoutDashboard },
     { id: 'portfolio' as HeaderPage, href: '/portfolio', label: 'محفظتك المستقبلية', icon: Wallet },
     { id: 'today' as HeaderPage, href: '/invest-today', label: 'استثمارك اليوم', icon: TrendingUp },
+    { id: 'calculators' as HeaderPage, href: '/calculators', label: 'الحاسبات المالية', icon: Calculator },
+    { id: 'insights' as HeaderPage, href: '/insights', label: 'معلومات اليوم والنصائح', icon: Newspaper },
   ],
   en: [
     { id: 'home' as HeaderPage, href: '/dashboard', label: 'Home', icon: LayoutDashboard },
     { id: 'portfolio' as HeaderPage, href: '/portfolio', label: 'Your future portfolio', icon: Wallet },
     { id: 'today' as HeaderPage, href: '/invest-today', label: 'Invest today', icon: TrendingUp },
+    { id: 'calculators' as HeaderPage, href: '/calculators', label: 'Calculators', icon: Calculator },
+    { id: 'insights' as HeaderPage, href: '/insights', label: 'Insights & Tips', icon: Newspaper },
   ],
 };
 

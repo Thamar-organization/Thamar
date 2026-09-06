@@ -31,7 +31,6 @@ const copy = {
     loading: 'جاري تحديث الأسعار...',
     unavailable: 'تعذر تحميل السعر الحي حاليًا',
     updated: 'آخر تحديث',
-    connected: 'متصل بالسوق',
   },
   en: {
     title: 'Global economy indicators',
@@ -46,7 +45,6 @@ const copy = {
     loading: 'Updating prices...',
     unavailable: 'Live price is currently unavailable',
     updated: 'Last updated',
-    connected: 'Market connected',
   },
 };
 
@@ -114,10 +112,12 @@ export default function InvestToday() {
 
           <section className="mt-10 flex flex-col justify-between gap-4 sm:mt-14 md:flex-row md:items-end">
             <h1 className="font-display text-3xl font-semibold tracking-[-.08em] text-[var(--ink)] sm:text-[2.6rem]" data-testid="heading-invest-today">{t.title}</h1>
-            <div className="flex items-center gap-2 self-start rounded-full border border-[#d7e3bd] bg-[#f0f6e6] px-3 py-2 text-[11px] text-[var(--olive-deep)] md:self-auto">
-              <span className="h-2 w-2 rounded-full bg-[var(--gold)]" />
-              {isLoading ? t.loading : t.connected}
-            </div>
+            {isLoading && (
+              <div className="flex items-center gap-2 self-start rounded-full border border-[#d7e3bd] bg-[#f0f6e6] px-3 py-2 text-[11px] text-[var(--olive-deep)] md:self-auto">
+                <span className="h-2 w-2 rounded-full bg-[var(--gold)]" />
+                {t.loading}
+              </div>
+            )}
           </section>
 
           <section className="mt-7 grid gap-4 lg:grid-cols-[1.25fr_.75fr]">
