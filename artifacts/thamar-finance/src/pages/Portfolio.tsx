@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { ArrowDownLeft, ArrowUpRight, BarChart3, ChevronDown, ShieldCheck, Wallet, ArrowLeft, ArrowRight, PiggyBank } from 'lucide-react';
 
 import ThamarSidebar from '@/components/ThamarSidebar';
+import ThamarTopNav from '@/components/ThamarTopNav';
 import { monthly, portfolioAccounts, portfolioMix, portfolioPlans, trendData, type Language } from '@/data/mock-finance';
 import useLanguagePreference from '@/hooks/use-language';
 
@@ -191,6 +192,7 @@ export default function Portfolio() {
 
       <main className={`relative z-10 w-full flex-1 pb-16 transition-all duration-300 ${isArabic ? 'lg:pr-[280px]' : 'lg:pl-[280px]'}`}>
         <div className="mx-auto max-w-[1400px] px-4 py-6 sm:px-8 lg:py-12">
+          <ThamarTopNav language={language} active="portfolio" />
           
           <header className="rise delay-1 mb-10 lg:mb-12">
             <h1 className="font-display text-3xl font-bold tracking-[-.04em] text-[var(--ink)] sm:text-4xl lg:text-[2.75rem]" data-testid="heading-future-portfolio">{t.title}</h1>

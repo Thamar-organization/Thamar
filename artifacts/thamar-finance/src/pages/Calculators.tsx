@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Calculator, Percent, TrendingUp, PieChart, Timer, LineChart, Coins, Scale, ArrowLeft, ArrowRight } from 'lucide-react';
 import ThamarSidebar from '@/components/ThamarSidebar';
+import ThamarTopNav from '@/components/ThamarTopNav';
 import useLanguagePreference from '@/hooks/use-language';
 import type { Language } from '@/data/mock-finance';
 
@@ -44,6 +45,7 @@ export default function Calculators() {
 
       <main className={`relative z-10 w-full flex-1 pb-16 transition-all duration-300 ${isArabic ? 'lg:pr-[280px]' : 'lg:pl-[280px]'}`}>
         <div className="mx-auto max-w-5xl px-4 py-6 sm:px-8 lg:py-12">
+          <ThamarTopNav language={language} active="calculators" />
           
           <header className="rise delay-1 mb-8 lg:mb-10">
             {activeCalc ? (

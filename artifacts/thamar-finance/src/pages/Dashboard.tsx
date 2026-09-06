@@ -1,4 +1,5 @@
 import ThamarSidebar from '@/components/ThamarSidebar';
+import ThamarTopNav from '@/components/ThamarTopNav';
 import MarketTicker from '@/components/MarketTicker';
 import useLanguagePreference from '@/hooks/use-language';
 
@@ -17,6 +18,9 @@ export default function Dashboard() {
       <div className="relative min-h-[100dvh] overflow-hidden px-4 py-4 sm:px-8 sm:py-8">
         <img className="watermark-logo" src={`${import.meta.env.BASE_URL}thamar-brand-transparent.png`} alt="" aria-hidden="true" />
         <div className="relative z-10 mx-auto flex min-h-[calc(100dvh-2rem)] max-w-[1240px] flex-col sm:min-h-[calc(100dvh-4rem)]">
+          <div className="lg:mx-20">
+            <ThamarTopNav language={language} active="home" />
+          </div>
           <section className="flex flex-1 flex-col items-center justify-center pb-10 pt-12 text-center sm:pb-16 sm:pt-16" data-testid="section-overview-brand">
             <img
               src={`${import.meta.env.BASE_URL}thamar-brand-transparent.png`}

@@ -1,8 +1,10 @@
 import { useState, useMemo, useEffect } from 'react';
 import { Search, BookOpen, Clock, ChevronRight, ChevronLeft, Lightbulb, AlertTriangle, ArrowLeft, ArrowRight, BookMarked, Newspaper } from 'lucide-react';
 import ThamarSidebar from '@/components/ThamarSidebar';
+import ThamarTopNav from '@/components/ThamarTopNav';
 import useLanguagePreference from '@/hooks/use-language';
 import { insightsData, insightCategories, dailyTip, disclaimer, type InsightCategory } from '@/data/mock-insights';
+import Infographic from '@/components/infographics/Infographic';
 
 export default function Insights() {
   const [language, setLanguage] = useLanguagePreference();
@@ -14,7 +16,7 @@ export default function Insights() {
 
   // UI Text mapping
   const t = useMemo(() => ({
-    pageTitle: isArabic ? 'معلومات اليوم والنصائح' : 'Today\'s Insights & Tips',
+    pageTitle: isArabic ? 'نصائح مالية' : 'Financial Tips',
     pageSubtitle: isArabic 
       ? 'استثمر في معرفتك الماليّة. مقالات ونقاط رئيسية لتصبح مستثمراً واثقاً.'
       : 'Invest in your financial knowledge. Articles and key points to become a confident investor.',
@@ -57,6 +59,7 @@ export default function Insights() {
 
       <main className={`relative z-10 w-full flex-1 pb-16 transition-all duration-300 ${isArabic ? 'lg:pr-[280px]' : 'lg:pl-[280px]'}`}>
         <div className="mx-auto max-w-[1000px] px-4 py-6 sm:px-8 lg:py-12">
+          <ThamarTopNav language={language} active="insights" />
           
           {selectedArticle ? (
             // Full Article View
@@ -94,9 +97,27 @@ export default function Insights() {
                 </div>
 
                 <div className="prose max-w-none text-base leading-loose text-[var(--ink)] opacity-90 prose-p:mb-6 prose-headings:font-display prose-headings:text-[var(--olive-deep)] prose-headings:font-bold">
-                  {(isArabic ? selectedArticle.bodyAr : selectedArticle.bodyEn).split('\n\n').map((paragraph, idx) => (
-                    <p key={idx}>{paragraph}</p>
-                  ))}
+                  {selectedArticle.blocks ? (
+                    selectedArticle.blocks.map((block, idx) => {
+                      if (block.type === 'text') {
+                        return (
+                          <div key={idx}>
+                            {(isArabic ? block.contentAr : block.contentEn).split('\n\n').map((paragraph, pIdx) => (
+                              <p key={pIdx}>{paragraph}</p>
+                            ))}
+                          </div>
+                        );
+                      }
+                      if (block.type === 'infographic') {
+                        return <Infographic key={idx} id={block.id} language={language} />;
+                      }
+                      return null;
+                    })
+                  ) : (
+                    (isArabic ? selectedArticle.bodyAr : selectedArticle.bodyEn)?.split('\n\n').map((paragraph, idx) => (
+                      <p key={idx}>{paragraph}</p>
+                    ))
+                  )}
                 </div>
               </article>
             </div>
@@ -112,8 +133,24 @@ export default function Insights() {
                 </p>
               </header>
 
+              <div className="rise delay-2 relative mb-8 w-full">
+                <div className="pointer-events-none absolute inset-y-0 flex items-center px-4 text-[var(--olive)] opacity-70" aria-hidden="true" style={{ [isArabic ? 'right' : 'left']: 0 }}>
+                  <Search size={18} />
+                </div>
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder={t.searchPlaceholder}
+                  className="w-full rounded-2xl border-none bg-[var(--paper)] py-3.5 text-sm text-[var(--ink)] shadow-sm ring-1 ring-[var(--line)] placeholder:text-[var(--muted-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--olive)]"
+                  style={{ paddingInlineStart: '2.75rem', paddingInlineEnd: '1rem' }}
+                  aria-label={t.searchPlaceholder}
+                  data-testid="input-search-insights"
+                />
+              </div>
+
               {/* Daily Tip Card */}
-              <section className="rise delay-2 mb-10">
+              <section className="rise delay-3 mb-10">
                 <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[var(--olive)] to-[var(--olive-deep)] p-6 text-[var(--paper)] shadow-[0_15px_30px_rgba(88,98,52,0.18)] sm:p-8" data-testid="card-daily-tip">
                   <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[var(--gold)]/20 blur-3xl" aria-hidden="true" />
                   <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
@@ -132,8 +169,8 @@ export default function Insights() {
                 </div>
               </section>
 
-              {/* Filters and Search */}
-              <div className="rise delay-3 sticky top-16 z-20 mb-8 flex flex-col gap-4 bg-[var(--background)]/90 py-4 backdrop-blur-md lg:top-0 lg:flex-row lg:items-center lg:justify-between">
+              {/* Category filters */}
+              <div className="rise delay-4 sticky top-16 z-20 mb-8 bg-[var(--background)]/90 py-4 backdrop-blur-md lg:top-0">
                 <div className="mobile-scroll flex flex-nowrap items-center gap-2 pb-2 lg:pb-0" role="tablist" aria-label={isArabic ? 'تصفية حسب الفئة' : 'Filter by category'}>
                   {(Object.entries(insightCategories[language]) as [InsightCategory | 'all', string][]).map(([key, label]) => (
                     <button
@@ -151,22 +188,6 @@ export default function Insights() {
                       {label}
                     </button>
                   ))}
-                </div>
-
-                <div className="relative w-full lg:w-72">
-                  <div className="pointer-events-none absolute inset-y-0 flex items-center px-4 text-[var(--olive)] opacity-70" aria-hidden="true" style={{ [isArabic ? 'right' : 'left']: 0 }}>
-                    <Search size={18} />
-                  </div>
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder={t.searchPlaceholder}
-                    className="w-full rounded-2xl border-none bg-[var(--paper)] py-3 text-sm text-[var(--ink)] shadow-sm ring-1 ring-[var(--line)] placeholder:text-[var(--muted-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--olive)]"
-                    style={{ paddingInlineStart: '2.75rem', paddingInlineEnd: '1rem' }}
-                    aria-label={t.searchPlaceholder}
-                    data-testid="input-search-insights"
-                  />
                 </div>
               </div>
 

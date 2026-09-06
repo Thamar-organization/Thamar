@@ -2,18 +2,22 @@ import { Link } from 'wouter';
 
 import type { Language } from '@/data/mock-finance';
 
-type HeaderPage = 'home' | 'portfolio' | 'today';
+type HeaderPage = 'home' | 'portfolio' | 'today' | 'calculators' | 'insights';
 
 const navigation = {
   ar: [
     { id: 'home' as HeaderPage, href: '/dashboard', label: 'الرئيسية' },
     { id: 'portfolio' as HeaderPage, href: '/portfolio', label: 'محفظتك المستقبلية' },
     { id: 'today' as HeaderPage, href: '/invest-today', label: 'استثمارك اليوم' },
+    { id: 'calculators' as HeaderPage, href: '/calculators', label: 'الحاسبات المالية' },
+    { id: 'insights' as HeaderPage, href: '/insights', label: 'نصائح مالية' },
   ],
   en: [
     { id: 'home' as HeaderPage, href: '/dashboard', label: 'Home' },
     { id: 'portfolio' as HeaderPage, href: '/portfolio', label: 'Your future portfolio' },
     { id: 'today' as HeaderPage, href: '/invest-today', label: 'Invest today' },
+    { id: 'calculators' as HeaderPage, href: '/calculators', label: 'Calculators' },
+    { id: 'insights' as HeaderPage, href: '/insights', label: 'Financial tips' },
   ],
 };
 
