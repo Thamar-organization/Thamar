@@ -22,10 +22,12 @@ export default function ThamarSidebar({
   language,
   active,
   onLanguageToggle,
+  overlay = false,
 }: {
   language: Language;
   active: HeaderPage;
   onLanguageToggle: () => void;
+  overlay?: boolean;
 }) {
   const isArabic = language === 'ar';
   const [isOpen, setIsOpen] = useState(false);
@@ -130,6 +132,56 @@ export default function ThamarSidebar({
       </div>
     </div>
   );
+
+  if (overlay) {
+    return (
+      <>
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          className={`fixed top-5 z-30 flex items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--paper)]/90 px-4 py-2.5 text-sm font-semibold text-[var(--olive-deep)] shadow-[0_10px_30px_rgba(72,82,43,.12)] backdrop-blur-md transition hover:-translate-y-0.5 hover:bg-[var(--leaf-pale)] ${isArabic ? 'right-5' : 'left-5'}`}
+          data-testid="button-dashboard-menu-open"
+          aria-label={isArabic ? 'فتح قائمة التنقل' : 'Open navigation menu'}
+          aria-expanded={isOpen}
+        >
+          <Menu size={18} />
+          <span>{isArabic ? 'القائمة' : 'Menu'}</span>
+        </button>
+
+        {isOpen && (
+          <button
+            type="button"
+            className="fixed inset-0 z-40 cursor-default bg-[var(--ink)]/25 backdrop-blur-sm"
+            onClick={() => setIsOpen(false)}
+            aria-label={isArabic ? 'إغلاق قائمة التنقل' : 'Close navigation menu'}
+            data-testid="button-dashboard-menu-backdrop"
+          />
+        )}
+
+        <aside
+          className={`fixed bottom-0 top-0 z-50 w-[280px] transform border-[var(--line)] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+            isArabic
+              ? `${isOpen ? 'right-0 translate-x-0' : 'right-0 translate-x-full'} border-l`
+              : `${isOpen ? 'left-0 translate-x-0' : 'left-0 -translate-x-full'} border-r`
+          }`}
+          aria-hidden={!isOpen}
+        >
+          <div className={`absolute top-4 z-50 ${isArabic ? 'left-4' : 'right-4'}`}>
+            <button
+              type="button"
+              onClick={() => setIsOpen(false)}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--paper)] text-[var(--olive-deep)] shadow-md transition-transform hover:scale-110"
+              data-testid="button-dashboard-menu-close"
+              aria-label={isArabic ? 'إغلاق القائمة' : 'Close menu'}
+            >
+              <X size={20} />
+            </button>
+          </div>
+          {content}
+        </aside>
+      </>
+    );
+  }
 
   return (
     <>
