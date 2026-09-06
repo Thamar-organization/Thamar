@@ -150,6 +150,47 @@
 .rtl { direction: rtl; }
 .ltr { direction: ltr; }
 
+.portfolio-ambient {
+  background:
+    radial-gradient(circle at 18% 24%, rgba(217, 237, 189, .24), transparent 28%),
+    radial-gradient(circle at 82% 76%, rgba(212, 168, 61, .12), transparent 26%);
+}
+.portfolio-glow {
+  animation: portfolioGlow 14s ease-in-out infinite alternate;
+}
+.portfolio-glow-gold {
+  animation-delay: -7s;
+}
+.asset-orb {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 4.25rem;
+  height: 4.25rem;
+  border: 1px solid rgba(116, 125, 74, .13);
+  border-radius: 1.4rem;
+  background: rgba(251, 250, 244, .42);
+  box-shadow: 0 16px 45px rgba(72, 82, 43, .07);
+  color: rgba(88, 98, 52, .2);
+  font-family: var(--app-font-mono);
+  font-size: .72rem;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+  animation: assetFloat 12s ease-in-out infinite;
+}
+.asset-orb-gold { inset-inline-start: 8%; top: 18%; color: rgba(180, 137, 30, .24); animation-delay: -2s; }
+.asset-orb-equity { inset-inline-end: 12%; top: 34%; animation-delay: -6s; animation-duration: 15s; }
+.asset-orb-sukuk { inset-inline-start: 18%; top: 68%; animation-delay: -9s; animation-duration: 14s; }
+.asset-orb-cash { inset-inline-end: 7%; top: 82%; width: 5rem; height: 5rem; animation-delay: -4s; animation-duration: 16s; }
+@keyframes portfolioGlow {
+  from { transform: translate3d(-3%, -2%, 0) scale(.96); }
+  to { transform: translate3d(4%, 3%, 0) scale(1.08); }
+}
+@keyframes assetFloat {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-4deg); }
+  50% { transform: translate3d(16px, -24px, 0) rotate(5deg); }
+}
+
 .market-ticker-track {
   animation: marketTicker 34s linear infinite;
   will-change: transform;
@@ -170,6 +211,10 @@
   .market-ticker-track {
     animation: none;
   }
+  .portfolio-glow,
+  .asset-orb {
+    animation: none;
+  }
 }
 
 @media (max-width: 767px) {
@@ -180,4 +225,10 @@
   }
   .mobile-scroll { overflow-x: auto; scrollbar-width: none; }
   .mobile-scroll::-webkit-scrollbar { display: none; }
+  .asset-orb {
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 1rem;
+    opacity: .65;
+  }
 }

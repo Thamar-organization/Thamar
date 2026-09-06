@@ -181,8 +181,14 @@ export default function Portfolio() {
     <div className={`app-shell grain flex flex-col ${isArabic ? 'rtl' : 'ltr'}`} lang={language}>
       <div className="fixed inset-0 z-0 overflow-hidden bg-[var(--paper)] pointer-events-none">
         <img className="watermark-logo" src={`${import.meta.env.BASE_URL}thamar-brand-transparent.png`} alt="" aria-hidden="true" />
-        <div className={`absolute top-[-10%] ${isArabic ? 'left-[-10%]' : 'right-[-10%]'} h-[60vh] w-[60vh] rounded-full bg-[var(--leaf)] opacity-[0.15] blur-[100px]`} />
-        <div className={`absolute bottom-[-10%] ${isArabic ? 'right-[-10%]' : 'left-[-10%]'} h-[60vh] w-[60vh] rounded-full bg-[var(--gold)] opacity-[0.08] blur-[100px]`} />
+        <div className="portfolio-ambient absolute inset-0" aria-hidden="true">
+          <div className={`portfolio-glow portfolio-glow-leaf absolute top-[-10%] ${isArabic ? 'left-[-10%]' : 'right-[-10%]'} h-[60vh] w-[60vh] rounded-full bg-[var(--leaf)] opacity-[0.18] blur-[100px]`} />
+          <div className={`portfolio-glow portfolio-glow-gold absolute bottom-[-10%] ${isArabic ? 'right-[-10%]' : 'left-[-10%]'} h-[60vh] w-[60vh] rounded-full bg-[var(--gold)] opacity-[0.1] blur-[100px]`} />
+          <span className="asset-orb asset-orb-gold">Au</span>
+          <span className="asset-orb asset-orb-equity">EQ</span>
+          <span className="asset-orb asset-orb-sukuk">S</span>
+          <span className="asset-orb asset-orb-cash">SAR</span>
+        </div>
       </div>
 
       <ThamarSidebar language={language} active="portfolio" onLanguageToggle={() => setLanguage(isArabic ? 'en' : 'ar')} />
